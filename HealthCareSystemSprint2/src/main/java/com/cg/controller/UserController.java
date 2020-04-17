@@ -90,7 +90,7 @@ public class UserController {
 	}
 */
 	@ExceptionHandler(IdNotFoundException.class)
-	public ResponseEntity<String> IdNotFound(IdNotFoundException e) {
+	public ResponseEntity<String> CenterNotFound(IdNotFoundException e) {
 		return new ResponseEntity<String>(e.getMessage(), HttpStatus.NOT_FOUND);
 	}
 	
