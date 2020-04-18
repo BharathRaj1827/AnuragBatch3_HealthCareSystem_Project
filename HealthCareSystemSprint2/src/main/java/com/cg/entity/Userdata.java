@@ -62,7 +62,4 @@ public class Userdata {
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
 	}
-	
-
-	
 }
