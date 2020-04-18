@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/diagnosticcenter")
 //@CrossOrigin("http://localhost:4200")
 
 public class AdminController {
@@ -86,6 +86,8 @@ public class AdminController {
 		}
 
 	
+		
+		
 	
 }
 

@@ -3,6 +3,12 @@ package com.cg.controller;
 import java.util.List;
 
 
+import com.cg.entity.Appointment;
+import com.cg.entity.Diagnostic_center;
+import com.cg.exceptions.IdNotFoundException;
+import com.cg.service.UserService;
+
+
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -18,12 +24,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cg.entity.Appointment;
-import com.cg.entity.Diagnostic_center;
-import com.cg.exceptions.IdNotFoundException;
-import com.cg.service.AdminService;
-import com.cg.service.UserService;
-
 
 @RestController
 @RequestMapping("/user")
@@ -35,7 +35,7 @@ public class UserController {
 	// Making an appointment
 	@PostMapping("/makeAppointment")
 	public ResponseEntity<String> addUser(@RequestBody Appointment a) {
-		Appointment e = serviceobj.makeApponiment(a);
+		Appointment e = serviceobj.makeAppointment(a);
 		if (e == null) {
 			throw new IdNotFoundException("Unsuccessfull");
 		} else {
@@ -88,9 +88,10 @@ public class UserController {
 			return new ResponseEntity<String>("Login successful", new HttpHeaders(), HttpStatus.OK);
 		}
 	}
+
 */
 	@ExceptionHandler(IdNotFoundException.class)
-	public ResponseEntity<String> CenterNotFound(IdNotFoundException e) {
+	public ResponseEntity<String> IdNotFound(IdNotFoundException e) {
 		return new ResponseEntity<String>(e.getMessage(), HttpStatus.NOT_FOUND);
 	}
 	

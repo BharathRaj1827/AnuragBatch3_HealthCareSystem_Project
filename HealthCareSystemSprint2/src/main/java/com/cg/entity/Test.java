@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -15,14 +16,12 @@ import javax.persistence.Table;
 @Table(name="test")
 public class Test {
 	@Id
-	@Column(name="test_id")
 	private int test_id;
-	
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="center_id")
-	
-	@Column(name="test_name")
 	private String test_name;
+		
+	@ManyToOne
+	@JoinColumn(name="centerId")
+	private Diagnostic_center diagnostic_center;
 	
 public int getTest_id() {
 	return test_id;

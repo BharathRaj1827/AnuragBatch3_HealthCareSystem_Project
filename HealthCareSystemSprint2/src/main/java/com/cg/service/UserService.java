@@ -6,9 +6,10 @@ import com.cg.entity.Appointment;
 import com.cg.entity.Diagnostic_center;
 
 public interface UserService {
+	
+	Appointment makeAppointment(Appointment a);
 
 	List<Diagnostic_center> getAllCenters();
 
-	Appointment makeApponiment(Appointment a);
-	
+
 }

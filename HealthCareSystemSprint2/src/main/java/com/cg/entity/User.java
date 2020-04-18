@@ -11,27 +11,22 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "User")
+@Table(name = "user")
 public class User{
 		@Id
-		@Column(name="user_id")
 		private int user_id;
+		private int age;
+		private String gender;
+		private long contact_no;
+		private String user_name;
+		private String password;
+		private String user_email;
 		
 		@OneToOne(cascade=CascadeType.ALL)
-		@JoinColumn(name="appointment_id")
+		@JoinColumn(name="user_id")
+		private Appointment appointment;
 		
-		@Column(name="age")
-		private int age;
-		@Column(name="gender")
-		private String gender;
-		@Column(name="contact_no")
-		private long contact_no;
-		@Column(name="user_name")
-		private String user_name;
-		@Column(name="password")
-		private String password;
-		@Column(name="user_email")
-		private String user_email;
+		
 		
 		public int getAge() {
 			return age;

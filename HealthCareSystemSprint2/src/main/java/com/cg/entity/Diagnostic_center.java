@@ -1,6 +1,10 @@
 package com.cg.entity;
 
 import javax.persistence.Entity;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -8,7 +12,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 
 
 @Entity
@@ -16,21 +22,16 @@ import javax.persistence.Table;
 public class Diagnostic_center {
 	
 	@Id
-	@Column(name="center_id")
 	private int center_id;
-	
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="appointment_id")
-	
-	@Column(name="center_name")
 	private String center_name;
-	@Column(name="contact_no")
 	private long contact_no;
-	@Column(name="address")
 	private String address;
 	
+	@OneToMany(mappedBy="diagnostic_center", cascade=CascadeType.ALL)
+	private List<Test> test= new ArrayList<Test>();
 	
-	
+	@OneToMany(mappedBy="diagnostic_center", cascade=CascadeType.ALL)
+	private List<Appointment> appointment= new ArrayList<Appointment>();
 	
 	
 	public int getCenter_id() {

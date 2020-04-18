@@ -2,38 +2,33 @@ package com.cg.entity;
 import java.sql.Date;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 
 
 @Entity
-@Table(name = "Appointment")
+@Table(name = "appointment")
 
 public class Appointment {
 	@Id
-	@Column(name="appointment_id")
-	private int appointment_id;
-	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="user_id")
-	
-	//@Column(name="USER_ID")
-	//private int user_id;
-	
-	
-	@Column(name="appointment_status")
+	private int appointment_id;	
 	private String appointment_status;
-	@Column(name="date_time")
 	private Date date_time;
 	
+	@OneToOne(mappedBy="appointment")
+	private User user;
 	
-	
+	@ManyToOne
+	@JoinColumn(name="centerId")
+	private Diagnostic_center diagnostic_center;
 	
 	
 	public int getAppointment_id() {
