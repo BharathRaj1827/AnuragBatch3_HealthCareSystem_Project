@@ -1,4 +1,4 @@
-package com.cg.entity;
+package com.cg.bean;
 import java.sql.Date;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -15,7 +15,7 @@ import javax.persistence.OneToOne;
 
 
 @Entity
-@Table(name = "appointment")
+@Table(name = "Appointment")
 
 public class Appointment {
 	@Id
@@ -24,7 +24,7 @@ public class Appointment {
 	private Date date_time;
 	
 	@OneToOne(mappedBy="appointment")
-	private User user;
+	private Userdata userdata;
 	
 	@ManyToOne
 	@JoinColumn(name="centerId")

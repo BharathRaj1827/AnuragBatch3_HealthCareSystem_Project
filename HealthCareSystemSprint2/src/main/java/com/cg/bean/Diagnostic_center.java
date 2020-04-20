@@ -1,4 +1,4 @@
-package com.cg.entity;
+package com.cg.bean;
 
 import javax.persistence.Entity;
 
@@ -18,7 +18,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="diagnostic_center")
+@Table(name="Diagnostic_center")
 public class Diagnostic_center {
 	
 	@Id

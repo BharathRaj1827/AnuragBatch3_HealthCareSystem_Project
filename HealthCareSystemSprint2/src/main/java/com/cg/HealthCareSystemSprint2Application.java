@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @SpringBootApplication
-@EntityScan(basePackages ={ "src.main.java.*"})
+@EntityScan(basePackages ={ "com.cg.*"})
 public class HealthCareSystemSprint2Application {
 
 	public static void main(String[] args) {

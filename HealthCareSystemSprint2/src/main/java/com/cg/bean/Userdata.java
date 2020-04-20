@@ -1,4 +1,4 @@
-package com.cg.entity;
+package com.cg.bean;
 import javax.persistence.Entity;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,8 +11,8 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "user")
-public class User{
+@Table(name = "User")
+public class Userdata{
 		@Id
 		private int user_id;
 		private int age;

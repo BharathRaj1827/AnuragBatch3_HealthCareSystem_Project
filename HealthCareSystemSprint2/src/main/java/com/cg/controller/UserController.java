@@ -2,10 +2,11 @@ package com.cg.controller;
 
 import java.util.List;
 
-
-import com.cg.entity.Appointment;
-import com.cg.entity.Diagnostic_center;
+import com.cg.bean.Appointment;
+import com.cg.bean.Diagnostic_center;
+import com.cg.bean.Userdata;
 import com.cg.exceptions.IdNotFoundException;
+import com.cg.exceptions.UserNotFoundException;
 import com.cg.service.UserService;
 
 
@@ -52,30 +53,8 @@ public class UserController {
 
 	}
 
-	/*
-	//Update User
-	@PutMapping("/UpdateUser")
-	public ResponseEntity<String> updateUser(@RequestBody Userdata u) {
-		Userdata e = serviceobj.updateUser(u);
-		if (e == null) {
-			throw new IdNotFoundException("Update Operation Unsuccessful,Provided Id does not exist");
-		} else {
-			return new ResponseEntity<String>("User updated successfully", new HttpHeaders(), HttpStatus.OK);
-		}
-	}
 	
-	// Delete User
-	@DeleteMapping("/DeleteUser/{userId}")
-	private ResponseEntity<String> deleteUser(@PathVariable("userId") int userId) {
-		Userdata e = serviceobj.deleteUser(userId);
-		if (e == null) {
-			throw new IdNotFoundException("Delete Operation Unsuccessful,Provided Id does not exist");
-		} else {
-			return new ResponseEntity<String>("User deleted successfully", new HttpHeaders(), HttpStatus.OK);
-		}
-	}
 	
-
 	@PutMapping("/Loginuser")
 	public ResponseEntity<String> loginUser(@RequestBody Userdata u)
 	{
@@ -89,7 +68,7 @@ public class UserController {
 		}
 	}
 
-*/
+
 	@ExceptionHandler(IdNotFoundException.class)
 	public ResponseEntity<String> IdNotFound(IdNotFoundException e) {
 		return new ResponseEntity<String>(e.getMessage(), HttpStatus.NOT_FOUND);

@@ -8,9 +8,10 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cg.bean.Appointment;
+import com.cg.bean.Diagnostic_center;
+import com.cg.bean.Userdata;
 import com.cg.dao.UserDaoImpl;
-import com.cg.entity.Appointment;
-import com.cg.entity.Diagnostic_center;
 
 @Service
 @Transactional
@@ -28,6 +29,11 @@ public Appointment makeAppointment(Appointment a) {
 public List<Diagnostic_center> getAllCenters() 
 {
 return dao.getAllCenters();
+}
+
+@Override
+public boolean loginUser(Userdata u) {
+	return dao.loginUser(u);
 }
 
 

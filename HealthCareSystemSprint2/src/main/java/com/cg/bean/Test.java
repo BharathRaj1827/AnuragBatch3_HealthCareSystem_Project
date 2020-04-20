@@ -1,4 +1,4 @@
-package com.cg.entity;
+package com.cg.bean;
 
 import javax.persistence.Entity;
 import javax.persistence.CascadeType;
@@ -13,14 +13,14 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="test")
+@Table(name="Test")
 public class Test {
 	@Id
 	private int test_id;
 	private String test_name;
 		
 	@ManyToOne
-	@JoinColumn(name="centerId")
+	@JoinColumn(name="center_id")
 	private Diagnostic_center diagnostic_center;
 	
 public int getTest_id() {

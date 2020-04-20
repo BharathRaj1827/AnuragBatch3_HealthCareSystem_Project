@@ -9,9 +9,10 @@ import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
-import com.cg.entity.Appointment;
-import com.cg.entity.Diagnostic_center;
-import com.cg.entity.Test;
+import com.cg.bean.Appointment;
+import com.cg.bean.Diagnostic_center;
+import com.cg.bean.Test;
+import com.cg.bean.Userdata;
 
 
 @Repository
@@ -38,4 +39,26 @@ public class UserDaoImpl implements UserDao {
     		return centerlist;
 			
 		}
-}
+		
+		
+		
+		@Override
+		public boolean loginUser(Userdata u) {
+		
+			Query q=em.createQuery("select m from User m where m.user_name=?1 and m.password=?2");
+			String a=u.getUser_name();
+			String b=u.getPassword();
+			q.setParameter(1, a);
+			q.setParameter(2,b);
+			try
+			{
+				Userdata m=(Userdata) q.getSingleResult();
+				return true;
+			}catch(javax.persistence.NoResultException e)
+		    {
+		        e.printStackTrace();
+		    }
+			return false;
+			}
+		}
+

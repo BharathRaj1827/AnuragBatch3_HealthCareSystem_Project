@@ -8,9 +8,13 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cg.bean.Admindata;
+import com.cg.bean.Appointment;
+import com.cg.bean.Diagnostic_center;
+import com.cg.bean.Test;
+import com.cg.bean.Userdata;
 import com.cg.dao.AdminDaoImpl;
-import com.cg.entity.Diagnostic_center;
-import com.cg.entity.Test;
+
 
 @Service
 @Transactional
@@ -25,8 +29,8 @@ public class AdminServiceImpl implements AdminService
     }
 
     @Override
-    public Diagnostic_center removeCenter(int centerId) {
-	return dao.removeCenter(centerId);
+    public Diagnostic_center removeCenter(int center_id) {
+	return dao.removeCenter(center_id);
     }
 
     @Override
@@ -35,9 +39,35 @@ public class AdminServiceImpl implements AdminService
     }
 
     @Override
-    public Test removeTest(int testId) {
-	return dao.removeTest(testId);
+    public Test removeTest(int test_id) {
+	return dao.removeTest(test_id);
     }
+  
+       
+	@Override
+	public Appointment approveAppointment(Appointment a) {
+		return dao.approveAppointment(a);
+	}
+
+	@Override
+	public boolean adminLogin(Admindata a) {
+		return dao.adminLogin(a);
+	}
+
+	@Override
+	public Userdata addUser(Userdata u) {
+		return dao.addUser(u);
+	}
+
+	@Override
+	public Userdata updateUser(Userdata u) {
+		return dao.updateUser(u);
+	}
+
+	@Override
+	public Userdata deleteUser(int user_id) {
+		return dao.deleteUser(user_id);
+	}
     
 }
 
