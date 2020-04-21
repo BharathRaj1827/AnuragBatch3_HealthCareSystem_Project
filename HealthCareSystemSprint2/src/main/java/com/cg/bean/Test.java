@@ -18,10 +18,7 @@ public class Test {
 	@Id
 	private int test_id;
 	private String test_name;
-		
-	@ManyToOne
-	@JoinColumn(name="center_id")
-	private Diagnostic_center diagnostic_center;
+	
 	
 public int getTest_id() {
 	return test_id;

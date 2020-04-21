@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "User")
+@Table(name = "Userdata")
 public class Userdata{
 		@Id
 		private int user_id;
@@ -22,12 +22,22 @@ public class Userdata{
 		private String password;
 		private String user_email;
 		
+		/*
 		@OneToOne(cascade=CascadeType.ALL)
 		@JoinColumn(name="user_id")
 		private Appointment appointment;
+		*/
+		
+		@OneToOne(mappedBy="userdata")
+		private Appointment appointment;
 		
 		
-		
+		public Appointment getAppointment() {
+			return appointment;
+		}
+		public void setAppointment(Appointment appointment) {
+			this.appointment = appointment;
+		}
 		public int getAge() {
 			return age;
 		}

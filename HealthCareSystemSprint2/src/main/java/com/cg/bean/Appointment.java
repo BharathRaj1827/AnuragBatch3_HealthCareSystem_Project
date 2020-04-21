@@ -23,13 +23,33 @@ public class Appointment {
 	private String appointment_status;
 	private Date date_time;
 	
-	@OneToOne(mappedBy="appointment")
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="appointment_id")
 	private Userdata userdata;
 	
 	@ManyToOne
-	@JoinColumn(name="centerId")
+	@JoinColumn(name="center_id")
 	private Diagnostic_center diagnostic_center;
 	
+	
+	
+	/*
+	@OneToOne(mappedBy="appointment")
+	private Userdata userdata;
+	*/ 
+	
+	public Userdata getUserdata() {
+		return userdata;
+	}
+	public void setUserdata(Userdata userdata) {
+		this.userdata = userdata;
+	}
+	public Diagnostic_center getDiagnostic_center() {
+		return diagnostic_center;
+	}
+	public void setDiagnostic_center(Diagnostic_center diagnostic_center) {
+		this.diagnostic_center = diagnostic_center;
+	}
 	
 	public int getAppointment_id() {
 		return appointment_id;

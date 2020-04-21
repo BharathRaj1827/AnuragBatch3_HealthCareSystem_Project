@@ -15,9 +15,9 @@ import javax.validation.constraints.Size;
 public class Admindata {
 	@Id
 	private int AdminId;
-	@NotBlank(message="Adminname cannot be empty")
+	//@NotBlank(message="Adminname cannot be empty")
 	private String AdminName;
-	@Size(min=8, max=20, message="password must be minimum 8 characters")
+	//@Size(min=8, max=20, message="password must be minimum 8 characters")
 	private String AdminPassword;
 	
 	

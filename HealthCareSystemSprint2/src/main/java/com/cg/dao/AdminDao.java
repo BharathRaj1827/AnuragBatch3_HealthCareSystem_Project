@@ -19,11 +19,13 @@ public interface AdminDao {
 	Test removeTest(int test_id);
 	
 	Appointment approveAppointment(Appointment a);
-	boolean adminLogin(Admindata a);
 
 	Userdata addUser(Userdata u);
 	Userdata updateUser(Userdata u);
 	Userdata deleteUser(int user_id);
+	
+	Admindata addAdmin(Admindata u);
+
 	
 	
 	//List<Diagnostic_center> getAllCenters();

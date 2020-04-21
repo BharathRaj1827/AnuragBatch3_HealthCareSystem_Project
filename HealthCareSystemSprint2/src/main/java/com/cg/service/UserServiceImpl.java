@@ -8,8 +8,10 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cg.bean.Admindata;
 import com.cg.bean.Appointment;
 import com.cg.bean.Diagnostic_center;
+import com.cg.bean.Test;
 import com.cg.bean.Userdata;
 import com.cg.dao.UserDaoImpl;
 
@@ -29,6 +31,18 @@ public Appointment makeAppointment(Appointment a) {
 public List<Diagnostic_center> getAllCenters() 
 {
 return dao.getAllCenters();
+}
+
+
+@Override
+public List<Test> getAllTests(int center_id) 
+{
+return dao.getAllTests(center_id);
+}
+
+@Override
+public boolean adminLogin(Admindata a) {
+	return dao.adminLogin(a);
 }
 
 @Override

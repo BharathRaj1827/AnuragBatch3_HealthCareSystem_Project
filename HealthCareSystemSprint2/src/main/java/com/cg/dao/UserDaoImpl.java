@@ -9,6 +9,7 @@ import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
+import com.cg.bean.Admindata;
 import com.cg.bean.Appointment;
 import com.cg.bean.Diagnostic_center;
 import com.cg.bean.Test;
@@ -23,7 +24,6 @@ public class UserDaoImpl implements UserDao {
 
 		@Override
 		public Appointment makeAppointment(Appointment a) {
-			// TODO Auto-generated method stub
 			Appointment at=em.merge(a);
 			return at;
 			
@@ -33,13 +33,38 @@ public class UserDaoImpl implements UserDao {
 
 		@Override
 		public List<Diagnostic_center> getAllCenters() {
-			// TODO Auto-generated method stub
 			Query q=em.createQuery("select m from Diagnostic_center m");
     		List<Diagnostic_center> centerlist=q.getResultList();
     		return centerlist;
 			
 		}
 		
+		
+		public List<Test> getAllTests(int center_id) {
+			Query q=em.createQuery("select m from Test m where m.center_id=center_id");
+    		List<Test> testlist=q.getResultList();
+    		return testlist;
+		}
+		
+
+    	@Override
+		public boolean adminLogin(Admindata a) {
+			Query q=em.createQuery("select m from Admindata m where m.adminName=?1 and m.adminPassword=?2");
+			String s1=a.getAdminName();
+			String s2=a.getAdminPassword();
+			q.setParameter(1, s1);
+			q.setParameter(2,s2);
+			try
+			{
+				Admindata m=(Admindata) q.getSingleResult();
+				return true;
+			}catch(javax.persistence.NoResultException e)
+		    {
+		        e.printStackTrace();
+		    }
+			return false;
+			}
+
 		
 		
 		@Override

@@ -1,6 +1,7 @@
 package com.cg.bean;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,8 @@ import javax.persistence.Table;
 
 
 
+
+
 @Entity
 @Table(name="Diagnostic_center")
 public class Diagnostic_center {
@@ -27,13 +30,22 @@ public class Diagnostic_center {
 	private long contact_no;
 	private String address;
 	
-	@OneToMany(mappedBy="diagnostic_center", cascade=CascadeType.ALL)
+	@OneToMany(/*mappedBy="diagnostic_center",*/cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@JoinColumn(name="center_id",referencedColumnName="center_id")
 	private List<Test> test= new ArrayList<Test>();
 	
+	
+	/*
 	@OneToMany(mappedBy="diagnostic_center", cascade=CascadeType.ALL)
 	private List<Appointment> appointment= new ArrayList<Appointment>();
+	*/
 	
-	
+	public List<Test> getTest() {
+		return test;
+	}
+	public void setTest(List<Test> test) {
+		this.test = test;
+	}
 	public int getCenter_id() {
 		return center_id;
 	}

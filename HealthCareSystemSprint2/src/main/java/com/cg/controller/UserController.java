@@ -2,14 +2,14 @@ package com.cg.controller;
 
 import java.util.List;
 
+import com.cg.bean.Admindata;
 import com.cg.bean.Appointment;
 import com.cg.bean.Diagnostic_center;
+import com.cg.bean.Test;
 import com.cg.bean.Userdata;
 import com.cg.exceptions.IdNotFoundException;
 import com.cg.exceptions.UserNotFoundException;
 import com.cg.service.UserService;
-
-
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -53,7 +53,19 @@ public class UserController {
 
 	}
 
+	@GetMapping("/GetAllTests/{center_id}")
+	private ResponseEntity<List<Test>> getAllTests(@PathVariable("center_id") int center_id) {
+		List<Test> testlist = serviceobj.getAllTests(center_id);
+		if (testlist == null) {
+			throw new IdNotFoundException("Id does not exist,so we couldn't fetch details");
+		} else {
+		return new ResponseEntity<List<Test>>(testlist, new HttpHeaders(), HttpStatus.OK);
+		}
+	}
 	
+		
+	
+		
 	
 	@PutMapping("/Loginuser")
 	public ResponseEntity<String> loginUser(@RequestBody Userdata u)
@@ -68,6 +80,21 @@ public class UserController {
 		}
 	}
 
+
+	//admin login
+	@PutMapping("/Adminlogin")
+	public ResponseEntity<String> adminLogin(@RequestBody Admindata a)
+	{
+		
+		 boolean flag=serviceobj.adminLogin(a);
+		if(flag==false)
+		{
+			throw new UserNotFoundException("User not found");
+		}else {
+			return new ResponseEntity<String>("Admin Login successful", new HttpHeaders(), HttpStatus.OK);
+		}
+	}
+	
 
 	@ExceptionHandler(IdNotFoundException.class)
 	public ResponseEntity<String> IdNotFound(IdNotFoundException e) {

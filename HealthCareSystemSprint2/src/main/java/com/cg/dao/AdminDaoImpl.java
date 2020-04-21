@@ -69,24 +69,6 @@ public class AdminDaoImpl implements AdminDao {
 		}
     	
     	
-    	@Override
-		public boolean adminLogin(Admindata a) {
-			Query q=em.createQuery("select m from Admindata m where m.adminName=?1 and m.adminPassword=?2");
-			String s1=a.getAdminName();
-			String s2=a.getAdminPassword();
-			q.setParameter(1, s1);
-			q.setParameter(2,s2);
-			try
-			{
-				Admindata m=(Admindata) q.getSingleResult();
-				return true;
-			}catch(javax.persistence.NoResultException e)
-		    {
-		        e.printStackTrace();
-		    }
-			return false;
-			}
-
 
 
 		public Userdata addUser(Userdata u) {
@@ -118,6 +100,13 @@ public class AdminDaoImpl implements AdminDao {
 				{em.remove(ud);
 				}
 	        return ud;
+		}
+
+
+
+		public Admindata addAdmin(Admindata a) {
+			Admindata e=em.merge(a);
+			return e;
 		}
 		}
 		

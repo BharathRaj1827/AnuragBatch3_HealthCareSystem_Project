@@ -50,11 +50,6 @@ public class AdminServiceImpl implements AdminService
 	}
 
 	@Override
-	public boolean adminLogin(Admindata a) {
-		return dao.adminLogin(a);
-	}
-
-	@Override
 	public Userdata addUser(Userdata u) {
 		return dao.addUser(u);
 	}
@@ -67,6 +62,11 @@ public class AdminServiceImpl implements AdminService
 	@Override
 	public Userdata deleteUser(int user_id) {
 		return dao.deleteUser(user_id);
+	} 
+
+	@Override
+	public Admindata addAdmin(Admindata a) {
+		return dao.addAdmin(a);
 	}
     
 }

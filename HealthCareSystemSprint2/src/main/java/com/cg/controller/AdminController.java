@@ -104,24 +104,26 @@ public class AdminController {
 		}
 		
 		
-		//admin login
-		@PutMapping("/Adminlogin")
-		public ResponseEntity<String> adminLogin(@RequestBody Admindata a)
-		{
-			
-			 boolean flag=serviceobj.adminLogin(a);
-			if(flag==false)
-			{
-				throw new UserNotFoundException("User not found");
-			}else {
-				return new ResponseEntity<String>("Admin Login successful", new HttpHeaders(), HttpStatus.OK);
+		
+		@PostMapping("/addAdmin")
+		public ResponseEntity<String> addAdmin(@RequestBody Admindata a) {
+			Admindata e = serviceobj.addAdmin(a);
+			if (e == null) {
+				throw new IdNotFoundException("Enter Valid Id");
+			} else {
+				return new ResponseEntity<String>("Admin created successfully", new HttpHeaders(), HttpStatus.OK);
 			}
 		}
+	
+		
+		
+		
+		 
 
 	
 		
 		
-		// Add user
+		// Add user 
 				@PostMapping("/addUser")
 				public ResponseEntity<String> addUser(@RequestBody Userdata u) {
 					Userdata e = serviceobj.addUser(u);
