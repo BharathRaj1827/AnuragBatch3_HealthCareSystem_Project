@@ -67,47 +67,33 @@ public class AdminDaoImpl implements AdminDao {
 			}
 			return aa;
 		}
-    	
-    	
-
-
-		public Userdata addUser(Userdata u) {
-			Userdata e=em.merge(u);
-			return e;
-		}
-
-
-
-		public Userdata updateUser(Userdata u) {
-			Userdata e=em.find(Userdata.class,u.getUser_id());
-			if(e!=null)
-			{
-				e.setUser_name(u.getUser_name());
-				e.setPassword(u.getPassword());
-				e.setGender(e.getGender());
-				e.setContact_no(e.getContact_no());
-				e.setAge(e.getAge());
-				e.setUser_email(e.getUser_email());
-			}
-			return e;
-		}
-
-
-
-		public Userdata deleteUser(int user_id) {
-			Userdata ud=em.find(Userdata.class,user_id);
-			if(ud!=null)
-				{em.remove(ud);
-				}
-	        return ud;
-		}
-
 
 
 		public Admindata addAdmin(Admindata a) {
 			Admindata e=em.merge(a);
 			return e;
 		}
+    	
+
+    	@Override
+		public boolean adminLogin(Admindata a) {
+			Query q=em.createQuery("select m from Admindata m where m.adminName=?1 and m.adminPassword=?2");
+			String s1=a.getAdminName();
+			String s2=a.getAdminPassword();
+			q.setParameter(1, s1);
+			q.setParameter(2,s2);
+			try
+			{
+				Admindata m=(Admindata) q.getSingleResult();
+				return true;
+			}catch(javax.persistence.NoResultException e)
+		    {
+		        e.printStackTrace();
+		    }
+			return false;
+			}
+
+		
 		}
 		
 		

@@ -48,21 +48,11 @@ public class AdminServiceImpl implements AdminService
 	public Appointment approveAppointment(Appointment a) {
 		return dao.approveAppointment(a);
 	}
-
+	
 	@Override
-	public Userdata addUser(Userdata u) {
-		return dao.addUser(u);
+	public boolean adminLogin(Admindata a) {
+		return dao.adminLogin(a);
 	}
-
-	@Override
-	public Userdata updateUser(Userdata u) {
-		return dao.updateUser(u);
-	}
-
-	@Override
-	public Userdata deleteUser(int user_id) {
-		return dao.deleteUser(user_id);
-	} 
 
 	@Override
 	public Admindata addAdmin(Admindata a) {

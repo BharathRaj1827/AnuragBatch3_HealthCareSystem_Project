@@ -20,11 +20,11 @@ public interface AdminDao {
 	
 	Appointment approveAppointment(Appointment a);
 
-	Userdata addUser(Userdata u);
-	Userdata updateUser(Userdata u);
-	Userdata deleteUser(int user_id);
+
+	boolean adminLogin(Admindata a);
 	
-	Admindata addAdmin(Admindata u);
+	
+	Admindata addAdmin(Admindata a);
 
 	
 	

@@ -17,10 +17,9 @@ public interface AdminService {
 	Test addTest(Test t);
 	Test removeTest(int test_id);
 	Appointment approveAppointment(Appointment a);
-	Userdata addUser(Userdata u);
-	Userdata updateUser(Userdata u);
-	Userdata deleteUser(int user_id);
-	Admindata addAdmin(Admindata a); 
+	
+	Admindata addAdmin(Admindata a);
+	boolean adminLogin(Admindata a); 
 	
 	
 	//List<Userdata> getAllUsers();

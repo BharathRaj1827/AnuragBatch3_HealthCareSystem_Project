@@ -104,6 +104,21 @@ public class AdminController {
 		}
 		
 		
+		//admin login
+		@PutMapping("/Adminlogin")
+		public ResponseEntity<String> adminLogin(@RequestBody Admindata a)
+		{
+			
+			 boolean flag=serviceobj.adminLogin(a);
+			if(flag==false)
+			{
+				throw new UserNotFoundException("User not found");
+			}else {
+				return new ResponseEntity<String>("Admin Login successful", new HttpHeaders(), HttpStatus.OK);
+			}
+		}
+		
+		
 		
 		@PostMapping("/addAdmin")
 		public ResponseEntity<String> addAdmin(@RequestBody Admindata a) {
@@ -113,49 +128,11 @@ public class AdminController {
 			} else {
 				return new ResponseEntity<String>("Admin created successfully", new HttpHeaders(), HttpStatus.OK);
 			}
+		}	
+		@ExceptionHandler(IdNotFoundException.class)
+		public ResponseEntity<String> IdNotFound(IdNotFoundException e) {
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.NOT_FOUND);
 		}
-	
-		
-		
-		
-		 
-
-	
-		
-		
-		// Add user 
-				@PostMapping("/addUser")
-				public ResponseEntity<String> addUser(@RequestBody Userdata u) {
-					Userdata e = serviceobj.addUser(u);
-					if (e == null) {
-						throw new IdNotFoundException("Enter Valid Id");
-					} else {
-						return new ResponseEntity<String>("User created successfully", new HttpHeaders(), HttpStatus.OK);
-					}
-				}
-			
-				//Update User
-				@PutMapping("/UpdateUser")
-				public ResponseEntity<String> updateUser(@RequestBody Userdata u) {
-					Userdata e = serviceobj.updateUser(u);
-					if (e == null) {
-						throw new IdNotFoundException("Update Operation Unsuccessful,Provided Id does not exist");
-					} else {
-						return new ResponseEntity<String>("User updated successfully", new HttpHeaders(), HttpStatus.OK);
-					}
-				}
-				
-				// Delete User
-				@DeleteMapping("/DeleteUser/{user_id}")
-				private ResponseEntity<String> deleteUser(@PathVariable("user_id") int user_id) {
-					Userdata e = serviceobj.deleteUser(user_id);
-					if (e == null) {
-						throw new IdNotFoundException("Delete Operation Unsuccessful,Provided Id does not exist");
-					} else {
-						return new ResponseEntity<String>("User deleted successfully", new HttpHeaders(), HttpStatus.OK);
-					}
-				}	
-	
 }
 
 	

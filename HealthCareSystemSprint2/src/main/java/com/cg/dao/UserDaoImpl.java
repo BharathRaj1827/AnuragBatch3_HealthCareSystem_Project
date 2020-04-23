@@ -41,31 +41,46 @@ public class UserDaoImpl implements UserDao {
 		
 		
 		public List<Test> getAllTests(int center_id) {
-			Query q=em.createQuery("select m from Test m where m.center_id=center_id");
+			Query q=em.createQuery("select *from Test where center_id=?1");
     		List<Test> testlist=q.getResultList();
     		return testlist;
 		}
-		
 
-    	@Override
-		public boolean adminLogin(Admindata a) {
-			Query q=em.createQuery("select m from Admindata m where m.adminName=?1 and m.adminPassword=?2");
-			String s1=a.getAdminName();
-			String s2=a.getAdminPassword();
-			q.setParameter(1, s1);
-			q.setParameter(2,s2);
-			try
+
+		public Userdata addUser(Userdata u) {
+			Userdata e=em.merge(u);
+			return e;
+		}
+
+
+
+		public Userdata updateUser(Userdata u) {
+			Userdata e=em.find(Userdata.class,u.getUser_id());
+			if(e!=null)
 			{
-				Admindata m=(Admindata) q.getSingleResult();
-				return true;
-			}catch(javax.persistence.NoResultException e)
-		    {
-		        e.printStackTrace();
-		    }
-			return false;
+				e.setUser_name(u.getUser_name());
+				e.setPassword(u.getPassword());
+				e.setGender(e.getGender());
+				e.setContact_no(e.getContact_no());
+				e.setAge(e.getAge());
+				e.setUser_email(e.getUser_email());
 			}
+			return e;
+		}
 
-		
+
+
+		public Userdata deleteUser(int user_id) {
+			Userdata ud=em.find(Userdata.class,user_id);
+			if(ud!=null)
+				{em.remove(ud);
+				}
+	        return ud;
+		}
+
+
+    	
+    	
 		
 		@Override
 		public boolean loginUser(Userdata u) {

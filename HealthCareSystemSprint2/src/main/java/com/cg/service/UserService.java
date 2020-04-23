@@ -16,9 +16,11 @@ public interface UserService {
 
 	boolean loginUser(Userdata u);
 
-	List<Test> getAllTests(int center_id);
-
-	boolean adminLogin(Admindata a);
+	List<Test> getAllTests(int center_id); 
+	
+	Userdata addUser(Userdata u);
+	Userdata updateUser(Userdata u);
+	Userdata deleteUser(int user_id);
 
 
 }

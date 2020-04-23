@@ -40,10 +40,25 @@ public List<Test> getAllTests(int center_id)
 return dao.getAllTests(center_id);
 }
 
+
 @Override
-public boolean adminLogin(Admindata a) {
-	return dao.adminLogin(a);
+public Userdata addUser(Userdata u) {
+	return dao.addUser(u);
 }
+
+@Override
+public Userdata updateUser(Userdata u) {
+	return dao.updateUser(u);
+}
+
+@Override
+public Userdata deleteUser(int user_id) {
+	return dao.deleteUser(user_id);
+} 
+
+
+
+
 
 @Override
 public boolean loginUser(Userdata u) {

@@ -17,6 +17,8 @@ public interface UserDao {
 	
 	List<Test> getAllTests(int center_id);
 	
-	boolean adminLogin(Admindata a);
+	Userdata addUser(Userdata u);
+	Userdata updateUser(Userdata u);
+	Userdata deleteUser(int user_id);
 
 }
