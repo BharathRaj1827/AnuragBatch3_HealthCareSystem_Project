@@ -2,25 +2,23 @@ package com.cg.service;
 
 import java.util.List;
 
-import com.cg.bean.Admindata;
-import com.cg.bean.Appointment;
-import com.cg.bean.Diagnostic_center;
-import com.cg.bean.Test;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.cg.bean.Userdata;
+import com.cg.dao.UserRepository;
 
 public interface UserService {
-	
-	Appointment makeAppointment(Appointment a);
 
-	List<Diagnostic_center> getAllCenters();
+	void setUdao(UserRepository udao);
 
-	boolean loginUser(Userdata u);
+	Userdata viewUser(int userid);
 
-	List<Test> getAllTests(int center_id); 
-	
-	Userdata addUser(Userdata u);
+	List<Userdata> viewUser();
+
+	Userdata addUser(Userdata user);
+
 	Userdata updateUser(Userdata u);
-	Userdata deleteUser(int user_id);
 
+	void deleteUser(int user_id);
 
 }

@@ -3,20 +3,7 @@ package com.cg.controller;
 
 import java.util.List;
 
-import com.cg.bean.Admindata;
-import com.cg.bean.Appointment;
-import com.cg.bean.Diagnostic_center;
-import com.cg.bean.Test;
-import com.cg.bean.Userdata;
-import com.cg.exceptions.IdNotFoundException;
-import com.cg.service.AdminService;
-import com.cg.exceptions.UserNotFoundException;
-
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +14,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cg.bean.Appointment;
+import com.cg.bean.Diagnostic_center;
+import com.cg.bean.Test;
+import com.cg.bean.Userdata;
+import com.cg.service.AppointmentService;
+import com.cg.service.Diagnostic_centerService;
+import com.cg.service.TestService;
+import com.cg.service.UserServiceImpl;
 
 
 @RestController
@@ -34,107 +29,114 @@ import org.springframework.web.bind.annotation.RestController;
 //@CrossOrigin("http://localhost:4200")
 
 public class AdminController {
-	@Autowired
-	AdminService serviceobj;
+	 @Autowired
+	 AppointmentService appointmentservice;
+	 
+	
+	 @GetMapping(value="/getAppointment/{appointment_id}",produces="application/json")
+	     public Appointment viewAppointment(@PathVariable int appointment_id)
+	     {
+	    	 return appointmentservice.viewAppointment(appointment_id);
+	     }
+	     
 
-	// Add Center
-	
-	@PostMapping("/addCenter")
-	public ResponseEntity<String> addCenter(@RequestBody Diagnostic_center d) {
-		Diagnostic_center dc = serviceobj.addCenter(d);
-		if (dc == null) {
-			throw new IdNotFoundException("Enter required Center details");
-		} else {
-			return new ResponseEntity<String>("Center added successfully", new HttpHeaders(), HttpStatus.OK);
-		}
-	}
-	
-	
-	
-	// Remove center
-	
-	@DeleteMapping("/removeCenter/{center_id}")
-	private ResponseEntity<String> removeCenter(@PathVariable("center_id") int center_id) {
-		Diagnostic_center d = serviceobj.removeCenter(center_id);
-		if (d == null) {
-			throw new IdNotFoundException("Remove Operation Unsuccessful,Provided Id does not exist");
-		} else {
-			return new ResponseEntity<String>("Center removed successfully", new HttpHeaders(), HttpStatus.OK);
-		}
-	}
-	
-	
-	// Add Test
-	
-		@PostMapping("/addTest")
-		public ResponseEntity<String> addTest(@RequestBody Test t) {
-			Test tt = serviceobj.addTest(t);
-			if (tt == null) {
-				throw new IdNotFoundException("Enter required Test details");
-			} else {
-				return new ResponseEntity<String>("Test added successfully", new HttpHeaders(), HttpStatus.OK);
-			}
-		}
-		
-		
-		
-		// Remove Test
-		
-		@DeleteMapping("/removeTest/{test_id}")
-		private ResponseEntity<String> removeTest(@PathVariable("test_id") int test_id) {
-			Test t = serviceobj.removeTest(test_id);
-			if (t == null) {
-				throw new IdNotFoundException("Remove Operation Unsuccessful,Provided Id does not exist");
-			} else {
-				return new ResponseEntity<String>("Test removed successfully", new HttpHeaders(), HttpStatus.OK);
-			}
-		}
-		
-		
-		//approve appointment
-		
-		@PutMapping("/approveAppointment")
-		public ResponseEntity<String> approveAppointment(@RequestBody Appointment a) {
-			Appointment aa = serviceobj.approveAppointment(a);
-			if (aa == null) {
-				throw new IdNotFoundException("Approve Operation Unsuccessful,Provided Id does not exist");
-			} else {
-				return new ResponseEntity<String>("Appointment approved successfully", new HttpHeaders(), HttpStatus.OK);
-			}
-		}
-		
-		
-		//admin login
-		@PutMapping("/Adminlogin")
-		public ResponseEntity<String> adminLogin(@RequestBody Admindata a)
-		{
-			
-			 boolean flag=serviceobj.adminLogin(a);
-			if(flag==false)
-			{
-				throw new UserNotFoundException("User not found");
-			}else {
-				return new ResponseEntity<String>("Admin Login successful", new HttpHeaders(), HttpStatus.OK);
-			}
-		}
-		
-		
-		
-		@PostMapping("/addAdmin")
-		public ResponseEntity<String> addAdmin(@RequestBody Admindata a) {
-			Admindata e = serviceobj.addAdmin(a);
-			if (e == null) {
-				throw new IdNotFoundException("Enter Valid Id");
-			} else {
-				return new ResponseEntity<String>("Admin created successfully", new HttpHeaders(), HttpStatus.OK);
-			}
-		}	
-		@ExceptionHandler(IdNotFoundException.class)
-		public ResponseEntity<String> IdNotFound(IdNotFoundException e) {
-			return new ResponseEntity<String>(e.getMessage(), HttpStatus.NOT_FOUND);
-		}
-}
+	     @GetMapping(value="/getAllAppointments",produces="application/json")
+	     public List<Appointment> viewAppointment()
+	     {
+	    	 return appointmentservice.viewAppointment();
+	     }
+	     
+	     /*
+	     @DeleteMapping("/deleteUser/{userid}")
+	     public String deleteUser(@PathVariable int userid)
+	     {
+	    	 userservice.deleteUser(userid);
+	    	 return "User Details Deleted";
+	     }*/
+	     
+	     @PutMapping("/approveAppointment")
+	     public Appointment updateAppoinment(@RequestBody Appointment appointment)
+	     {
+	    	 Appointment a=appointmentservice.updateAppointment(appointment);
+	    	 return a;
+	     }
+	     
+	     
+	     @Autowired
+		 Diagnostic_centerService Diagnostic_centerservice;
+		  
+		 /*
+		 @GetMapping(value="/getUser/{userid}",produces="application/json")
+		     public Userdata viewUser(@PathVariable int userid)
+		     {
+		    	 return userservice.viewUser(userid);
+		     }*/
+		     
+		     @PostMapping(value="/addCenter")
+		     public Diagnostic_center addCenter(@RequestBody()Diagnostic_center center)
+		     {
+		    	 Diagnostic_center  dc= Diagnostic_centerservice.addCenter(center);
+		    	 return dc;
+		     }
+		     
+		     @GetMapping(value="/getAllCenters",produces="application/json")
+		     public List<Diagnostic_center> viewDiagnostic_center()
+		     {
+		    	 return Diagnostic_centerservice.viewDiagnostic_center();
+		     }
+		     
+		     @DeleteMapping("/removeCenter/{center_id}")
+		     public String removeDiagnostic_center(@PathVariable int center_id)
+		     {
+		    	 Diagnostic_centerservice.removeCenter(center_id);
+		    	 return "Diagnostic_center Details Removed";
+		     }
+		     
+		     /*
+		     @PutMapping("/updateUser")
+		     public Userdata updateUser(@RequestBody Userdata user)
+		     {
+		    	 Userdata u=userservice.updateUser(user);
+		    	 return u;
+		     }*/
 
-	
-	
-	
+		     
+		     
+		     @Autowired
+		     TestService testservice;
+			  
+			 /*
+			 @GetMapping(value="/getUser/{userid}",produces="application/json")
+			     public Userdata viewUser(@PathVariable int userid)
+			     {
+			    	 return userservice.viewUser(userid);
+			     }*/
+			     
+			     @PostMapping(value="/addTest")
+			     public Test addTest(@RequestBody()Test test)
+			     {
+			    	 Test  t= testservice.addTest(test);
+			    	 return t;
+			     }
+			     
+			     @GetMapping(value="/getAllTests",produces="application/json")
+			     public List<Test> viewTest()
+			     {
+			    	 return testservice.viewTest();
+			     }
+			     
+			     @DeleteMapping("/removeTest/{test_id}")
+			     public String removeTest(@PathVariable int test_id)
+			     {
+			    	 testservice.removeTest(test_id);
+			    	 return "Test Details Removed";
+			     }
+			     
+			     /*
+			     @PutMapping("/updateUser")
+			     public Userdata updateUser(@RequestBody Userdata user)
+			     {
+			    	 Userdata u=userservice.updateUser(user);
+			    	 return u;
+			     }*/ 
+} 

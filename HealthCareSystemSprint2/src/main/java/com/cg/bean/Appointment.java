@@ -23,6 +23,7 @@ public class Appointment {
 	private String appointment_status;
 	private Date date_time;
 	
+	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="appointment_id")
 	private Userdata userdata;

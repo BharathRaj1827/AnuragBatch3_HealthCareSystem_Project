@@ -2,19 +2,7 @@ package com.cg.controller;
 
 import java.util.List;
 
-import com.cg.bean.Admindata;
-import com.cg.bean.Appointment;
-import com.cg.bean.Diagnostic_center;
-import com.cg.bean.Test;
-import com.cg.bean.Userdata;
-import com.cg.exceptions.IdNotFoundException;
-import com.cg.exceptions.UserNotFoundException;
-import com.cg.service.UserService;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,102 +13,59 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cg.bean.Appointment;
+import com.cg.bean.Userdata;
+import com.cg.service.AppointmentService;
+import com.cg.service.UserService;
+
 
 @RestController
 @RequestMapping("/user")
 //@CrossOrigin("http://localhost:4200")
+
 public class UserController {
-	@Autowired
-	UserService serviceobj;
-
-	// Making an appointment
-	@PostMapping("/makeAppointment")
-	public ResponseEntity<String> addUser(@RequestBody Appointment a) {
-		Appointment e = serviceobj.makeAppointment(a);
-		if (e == null) {
-			throw new IdNotFoundException("Unsuccessfull");
-		} else {
-			return new ResponseEntity<String>("Apponitment made successfully", new HttpHeaders(), HttpStatus.OK);
-		}
-	}
-
+	 @Autowired
+     UserService userservice;
+	 AppointmentService appointmentservice;
+	 
+	 @PostMapping(value="/makeAppointment")
+     public Appointment addAppointment(@RequestBody()Appointment appointment)
+     {
+		 Appointment  a= appointmentservice.addAppointment(appointment);
+    	 return a;
+     }
+	 
 	
-	// Get all Centers
-	@GetMapping("/GetAllCenters")
-	private ResponseEntity<List<Diagnostic_center>> getAllCenters() {
-		List<Diagnostic_center> centerlist = serviceobj.getAllCenters();
-		return new ResponseEntity<List<Diagnostic_center>>(centerlist, new HttpHeaders(), HttpStatus.OK);
-
-	}
-
-	@GetMapping("/GetAllTests/{center_id}")
-	private ResponseEntity<List<Test>> getAllTests(@PathVariable("center_id") int center_id) {
-		List<Test> testlist = serviceobj.getAllTests(center_id);
-		if (testlist == null) {
-			throw new IdNotFoundException("Id does not exist,so we couldn't fetch details");
-		} else {
-		return new ResponseEntity<List<Test>>(testlist, new HttpHeaders(), HttpStatus.OK);
-		}
-	}
-	
-		
-	
-		
-	
-	@PutMapping("/Loginuser")
-	public ResponseEntity<String> loginUser(@RequestBody Userdata u)
-	{
-		
-		 boolean flag=serviceobj.loginUser(u);
-		if(flag==false)
-		{
-			throw new UserNotFoundException("User not found");
-		}else {
-			return new ResponseEntity<String>("Login successful", new HttpHeaders(), HttpStatus.OK);
-		}
-	}
-
-	
-
-	
-	
-	// Add user 
-			@PostMapping("/addUser")
-			public ResponseEntity<String> addUser(@RequestBody Userdata u) {
-				Userdata e = serviceobj.addUser(u);
-				if (e == null) {
-					throw new IdNotFoundException("Enter Valid Id");
-				} else {
-					return new ResponseEntity<String>("User created successfully", new HttpHeaders(), HttpStatus.OK);
-				}
-			}
-		
-			//Update User
-			@PutMapping("/UpdateUser")
-			public ResponseEntity<String> updateUser(@RequestBody Userdata u) {
-				Userdata e = serviceobj.updateUser(u);
-				if (e == null) {
-					throw new IdNotFoundException("Update Operation Unsuccessful,Provided Id does not exist");
-				} else {
-					return new ResponseEntity<String>("User updated successfully", new HttpHeaders(), HttpStatus.OK);
-				}
-			}
-			
-			// Delete User
-			@DeleteMapping("/DeleteUser/{user_id}")
-			private ResponseEntity<String> deleteUser(@PathVariable("user_id") int user_id) {
-				Userdata e = serviceobj.deleteUser(user_id);
-				if (e == null) {
-					throw new IdNotFoundException("Delete Operation Unsuccessful,Provided Id does not exist");
-				} else {
-					return new ResponseEntity<String>("User deleted successfully", new HttpHeaders(), HttpStatus.OK);
-				}
-			}	 
-	
-
-	@ExceptionHandler(IdNotFoundException.class)
-	public ResponseEntity<String> IdNotFound(IdNotFoundException e) {
-		return new ResponseEntity<String>(e.getMessage(), HttpStatus.NOT_FOUND);
-	}
-	
+	  @GetMapping(value="/getUser/{userid}",produces="application/json")
+	     public Userdata viewUser(@PathVariable int userid)
+	     {
+	    	 return userservice.viewUser(userid);
+	     }
+	     
+	     @PostMapping(value="/addUser")
+	     public Userdata addUser(@RequestBody()Userdata user)
+	     {
+	    	 Userdata  u= userservice.addUser(user);
+	    	 return u;
+	     }
+	     
+	     @GetMapping(value="/getAllUsers",produces="application/json")
+	     public List<Userdata> viewUser()
+	     {
+	    	 return userservice.viewUser();
+	     }
+	     
+	     @DeleteMapping("/deleteUser/{userid}")
+	     public String deleteUser(@PathVariable int userid)
+	     {
+	    	 userservice.deleteUser(userid);
+	    	 return "User Details Deleted";
+	     }
+	     
+	     @PutMapping("/updateUser")
+	     public Userdata updateUser(@RequestBody Userdata user)
+	     {
+	    	 Userdata u=userservice.updateUser(user);
+	    	 return u;
+	     }
 }

@@ -1,69 +1,85 @@
 package com.cg.service;
-
-
 import java.util.List;
-
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.cg.bean.Admindata;
-import com.cg.bean.Appointment;
-import com.cg.bean.Diagnostic_center;
-import com.cg.bean.Test;
 import com.cg.bean.Userdata;
-import com.cg.dao.UserDaoImpl;
+import com.cg.dao.UserRepository;
+
 
 @Service
-@Transactional
-public class UserServiceImpl implements UserService 
+public class UserServiceImpl implements UserService
 {
-@Autowired
-UserDaoImpl dao;
+     @Autowired
+     UserRepository udao;
+ 
 
-@Override
-public Appointment makeAppointment(Appointment a) {
-	return dao.makeAppointment(a);
-}
-
-@Override
-public List<Diagnostic_center> getAllCenters() 
-{
-return dao.getAllCenters();
-}
-
-
-@Override
-public List<Test> getAllTests(int center_id) 
-{
-return dao.getAllTests(center_id);
-}
-
-
-@Override
-public Userdata addUser(Userdata u) {
-	return dao.addUser(u);
-}
-
-@Override
-public Userdata updateUser(Userdata u) {
-	return dao.updateUser(u);
-}
-
-@Override
-public Userdata deleteUser(int user_id) {
-	return dao.deleteUser(user_id);
-} 
-
-
-
-
-
-@Override
-public boolean loginUser(Userdata u) {
-	return dao.loginUser(u);
-}
-
-
+	/* (non-Javadoc)
+	 * @see com.cg.service.UserService#setUdao(com.cg.dao.UserRepository)
+	 */
+	@Override
+	public void setUdao(UserRepository udao) { this.udao=udao; }
+     
+     /* (non-Javadoc)
+	 * @see com.cg.service.UserService#viewUser(int)
+	 */
+    @Override
+	@Transactional(readOnly=true)
+     public Userdata viewUser(int userid)
+     {
+    	 return udao.findById(userid).get();
+     }
+     
+     /* (non-Javadoc)
+	 * @see com.cg.service.UserService#viewUser()
+	 */
+    @Override
+	@Transactional(readOnly=true)
+     public List<Userdata> viewUser()
+     {
+    	 return udao.findAll();
+     }
+     
+     /* (non-Javadoc)
+	 * @see com.cg.service.UserService#addUser(com.cg.bean.Userdata)
+	 */
+    @Override
+	@Transactional
+     public Userdata addUser(Userdata user)
+     {
+    	 return udao.save(user);
+     }
+     
+     /* (non-Javadoc)
+	 * @see com.cg.service.UserService#updateUser(com.cg.bean.Userdata)
+	 */
+    @Override
+	@Transactional
+     public Userdata updateUser(Userdata u)
+     {
+    		Userdata ud=udao.findById(u.getUser_id()).get();
+    		if(ud!=null)
+    		{
+    			ud.setUser_name(u.getUser_name());
+    			ud.setPassword(u.getPassword());
+    			ud.setContact_no(u.getContact_no());
+    			ud.setUser_email(u.getUser_email());
+    			ud.setGender(u.getGender());
+    			ud.setAge(u.getAge());
+    		}
+    		return udao.save(ud);
+    	 
+     }
+     
+     /* (non-Javadoc)
+	 * @see com.cg.service.UserService#deleteUser(int)
+	 */
+    @Override
+	@Transactional
+     public void deleteUser(int user_id)
+     {
+    	  udao.deleteById(user_id);
+     }
 }
