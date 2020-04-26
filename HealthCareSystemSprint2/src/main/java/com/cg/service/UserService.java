@@ -4,21 +4,23 @@ import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import com.cg.bean.Userdata;
+import com.cg.bean.Users;
 import com.cg.dao.UserRepository;
 
 public interface UserService {
 
 	void setUdao(UserRepository udao);
 
-	Userdata viewUser(int userid);
+	Users viewUser(int userid);
 
-	List<Userdata> viewUser();
+	List<Users> viewUser();
 
-	Userdata addUser(Userdata user);
+	Users addUser(Users user);
 
-	Userdata updateUser(Userdata u);
+	Users updateUser(Users u);
 
-	void deleteUser(int user_id);
+	void deleteUser(int userid);
+
+
 
 }

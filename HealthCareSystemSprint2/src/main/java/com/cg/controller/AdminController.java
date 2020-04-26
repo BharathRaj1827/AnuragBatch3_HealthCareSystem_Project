@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cg.bean.Appointment;
 import com.cg.bean.Diagnostic_center;
 import com.cg.bean.Test;
-import com.cg.bean.Userdata;
+import com.cg.bean.Users;
 import com.cg.service.AppointmentService;
 import com.cg.service.Diagnostic_centerService;
 import com.cg.service.TestService;
@@ -29,8 +29,15 @@ import com.cg.service.UserServiceImpl;
 //@CrossOrigin("http://localhost:4200")
 
 public class AdminController {
+	
 	 @Autowired
 	 AppointmentService appointmentservice;
+	 
+	 @Autowired
+	 Diagnostic_centerService Diagnostic_centerservice;
+	 
+	 @Autowired
+     TestService testservice;
 	 
 	
 	 @GetMapping(value="/getAppointment/{appointment_id}",produces="application/json")
@@ -62,8 +69,7 @@ public class AdminController {
 	     }
 	     
 	     
-	     @Autowired
-		 Diagnostic_centerService Diagnostic_centerservice;
+	     
 		  
 		 /*
 		 @GetMapping(value="/getUser/{userid}",produces="application/json")
@@ -102,8 +108,7 @@ public class AdminController {
 
 		     
 		     
-		     @Autowired
-		     TestService testservice;
+		    
 			  
 			 /*
 			 @GetMapping(value="/getUser/{userid}",produces="application/json")

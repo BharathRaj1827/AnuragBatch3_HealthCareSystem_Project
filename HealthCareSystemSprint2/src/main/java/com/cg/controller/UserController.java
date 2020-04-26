@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.bean.Appointment;
-import com.cg.bean.Userdata;
+import com.cg.bean.Users;
 import com.cg.service.AppointmentService;
 import com.cg.service.UserService;
 
@@ -24,8 +24,10 @@ import com.cg.service.UserService;
 //@CrossOrigin("http://localhost:4200")
 
 public class UserController {
+	
 	 @Autowired
      UserService userservice;
+	 @Autowired
 	 AppointmentService appointmentservice;
 	 
 	 @PostMapping(value="/makeAppointment")
@@ -37,20 +39,20 @@ public class UserController {
 	 
 	
 	  @GetMapping(value="/getUser/{userid}",produces="application/json")
-	     public Userdata viewUser(@PathVariable int userid)
+	     public Users viewUser(@PathVariable int userid)
 	     {
 	    	 return userservice.viewUser(userid);
 	     }
 	     
 	     @PostMapping(value="/addUser")
-	     public Userdata addUser(@RequestBody()Userdata user)
+	     public Users addUser(@RequestBody()Users user)
 	     {
-	    	 Userdata  u= userservice.addUser(user);
+	    	 Users  u= userservice.addUser(user);
 	    	 return u;
 	     }
 	     
 	     @GetMapping(value="/getAllUsers",produces="application/json")
-	     public List<Userdata> viewUser()
+	     public List<Users> viewUser()
 	     {
 	    	 return userservice.viewUser();
 	     }
@@ -63,9 +65,11 @@ public class UserController {
 	     }
 	     
 	     @PutMapping("/updateUser")
-	     public Userdata updateUser(@RequestBody Userdata user)
+	     public Users updateUser(@RequestBody Users user)
 	     {
-	    	 Userdata u=userservice.updateUser(user);
+	    	 Users u=userservice.updateUser(user);
 	    	 return u;
 	     }
+	     
+	    
 }

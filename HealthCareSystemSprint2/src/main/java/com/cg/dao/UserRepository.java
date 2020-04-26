@@ -6,11 +6,11 @@ import java.io.Serializable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.cg.bean.Userdata;
+import com.cg.bean.Users;
 
 
 @Repository
-public interface UserRepository extends JpaRepository<Userdata,Serializable>
+public interface UserRepository extends JpaRepository<Users,Serializable>
 {
 
 }

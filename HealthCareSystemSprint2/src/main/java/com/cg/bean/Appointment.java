@@ -1,7 +1,10 @@
 package com.cg.bean;
 import java.sql.Date;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -26,12 +29,11 @@ public class Appointment {
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="appointment_id")
-	private Userdata userdata;
+	private Users users;
 	
 	@ManyToOne
 	@JoinColumn(name="center_id")
 	private Diagnostic_center diagnostic_center;
-	
 	
 	
 	/*
@@ -39,11 +41,11 @@ public class Appointment {
 	private Userdata userdata;
 	*/ 
 	
-	public Userdata getUserdata() {
-		return userdata;
+	public Users getUsers() {
+		return users;
 	}
-	public void setUserdata(Userdata userdata) {
-		this.userdata = userdata;
+	public void setUsers(Users users) {
+		this.users = users;
 	}
 	public Diagnostic_center getDiagnostic_center() {
 		return diagnostic_center;

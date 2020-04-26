@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.cg.bean.Userdata;
+import com.cg.bean.Users;
 import com.cg.dao.UserRepository;
 
 
@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService
 	 */
     @Override
 	@Transactional(readOnly=true)
-     public Userdata viewUser(int userid)
+     public Users viewUser(int userid)
      {
     	 return udao.findById(userid).get();
      }
@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService
 	 */
     @Override
 	@Transactional(readOnly=true)
-     public List<Userdata> viewUser()
+     public List<Users> viewUser()
      {
     	 return udao.findAll();
      }
@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService
 	 */
     @Override
 	@Transactional
-     public Userdata addUser(Userdata user)
+     public Users addUser(Users user)
      {
     	 return udao.save(user);
      }
@@ -57,15 +57,15 @@ public class UserServiceImpl implements UserService
 	 */
     @Override
 	@Transactional
-     public Userdata updateUser(Userdata u)
+     public Users updateUser(Users u)
      {
-    		Userdata ud=udao.findById(u.getUser_id()).get();
+    		Users ud=udao.findById(u.getUserid()).get();
     		if(ud!=null)
     		{
-    			ud.setUser_name(u.getUser_name());
+    			ud.setName(u.getName());
     			ud.setPassword(u.getPassword());
-    			ud.setContact_no(u.getContact_no());
-    			ud.setUser_email(u.getUser_email());
+    			ud.setPhonenumber(u.getPhonenumber());
+    			ud.setEmail(u.getEmail());
     			ud.setGender(u.getGender());
     			ud.setAge(u.getAge());
     		}
@@ -78,8 +78,12 @@ public class UserServiceImpl implements UserService
 	 */
     @Override
 	@Transactional
-     public void deleteUser(int user_id)
+     public void deleteUser(int userid)
      {
-    	  udao.deleteById(user_id);
+    	  udao.deleteById(userid);
      }
+    
+    
+    
+    
 }
