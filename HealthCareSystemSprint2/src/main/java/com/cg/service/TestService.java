@@ -15,6 +15,6 @@ public interface TestService {
 
 	Test addTest(Test test);
 
-	void removeTest(int test_id);
+	void removeTest(int testid);
 
 }

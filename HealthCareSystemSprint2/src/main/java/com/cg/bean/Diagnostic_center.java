@@ -25,13 +25,37 @@ import javax.persistence.Table;
 public class Diagnostic_center {
 	
 	@Id
-	private int center_id;
-	private String center_name;
-	private long contact_no;
-	private String address;
+	private int centreid;
+	public int getCentreid() {
+		return centreid;
+	}
+	public void setCentreid(int centreid) {
+		this.centreid = centreid;
+	}
+	public String getCentrename() {
+		return centrename;
+	}
+	public void setCentrename(String centrename) {
+		this.centrename = centrename;
+	}
+	public long getCentrePhno() {
+		return centrePhno;
+	}
+	public void setCentrePhno(long centrePhno) {
+		this.centrePhno = centrePhno;
+	}
+	public String getCentreAdd() {
+		return centreAdd;
+	}
+	public void setCentreAdd(String centreAdd) {
+		this.centreAdd = centreAdd;
+	}
+	private String centrename;
+	private long centrePhno;
+	private String centreAdd;
 	
 	@OneToMany(/*mappedBy="diagnostic_center",*/cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	@JoinColumn(name="center_id",referencedColumnName="center_id")
+	@JoinColumn(name="centreid",referencedColumnName="centreid")
 	private List<Test> test= new ArrayList<Test>();
 	
 	
@@ -46,29 +70,5 @@ public class Diagnostic_center {
 	public void setTest(List<Test> test) {
 		this.test = test;
 	}
-	public int getCenter_id() {
-		return center_id;
-	}
-	public void setCenter_id(int center_id) {
-		this.center_id = center_id;
-	}
-	public String getCenter_name() {
-		return center_name;
-	}
-	public void setCenter_name(String center_name) {
-		this.center_name = center_name;
-	}
-	public long getContact_no() {
-		return contact_no;
-	}
-	public void setContact_no(long contact_no) {
-		this.contact_no = contact_no;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	
+		
 }

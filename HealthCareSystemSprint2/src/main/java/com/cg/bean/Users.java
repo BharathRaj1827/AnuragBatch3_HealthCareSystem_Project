@@ -15,10 +15,10 @@ import javax.persistence.Table;
 public class Users{
 		@Id
 		private int userid;
+		private String name;
 		private int age;
 		private String gender;
 		private long phonenumber;
-		private String name;
 		private String password;
 		private String email;
 		
@@ -79,13 +79,13 @@ public class Users{
 		*/
 		
 		
-		
+		/*
 		public Appointment getAppointment() {
 			return appointment;
 		}
 		public void setAppointment(Appointment appointment) {
 			this.appointment = appointment;
-		}
+		}*/
 		
 		
 		

@@ -16,20 +16,20 @@ import javax.persistence.Table;
 @Table(name="Test")
 public class Test {
 	@Id
-	private int test_id;
-	private String test_name;
+	private int testid;
+	private String testname;
 	
 	
-public int getTest_id() {
-	return test_id;
+public int getTestid() {
+	return testid;
 }
-public void setTest_id(int test_id) {
-	this.test_id = test_id;
+public void setTestid(int testid) {
+	this.testid = testid;
 }
-public String getTest_name() {
-	return test_name;
+public String getTestname() {
+	return testname;
 }
-public void setTest_name(String test_name) {
-	this.test_name = test_name;
+public void setTestname(String testname) {
+	this.testname = testname;
 }
 }

@@ -26,7 +26,7 @@ import com.cg.service.UserServiceImpl;
 
 @RestController
 @RequestMapping("/admin")
-//@CrossOrigin("http://localhost:4200")
+@CrossOrigin("http://localhost:4200")
 
 public class AdminController {
 	
@@ -40,10 +40,10 @@ public class AdminController {
      TestService testservice;
 	 
 	
-	 @GetMapping(value="/getAppointment/{appointment_id}",produces="application/json")
-	     public Appointment viewAppointment(@PathVariable int appointment_id)
+	 @GetMapping(value="/getAppointment/{appointmentid}",produces="application/json")
+	     public Appointment viewAppointment(@PathVariable int appointmentid)
 	     {
-	    	 return appointmentservice.viewAppointment(appointment_id);
+	    	 return appointmentservice.viewAppointment(appointmentid);
 	     }
 	     
 
@@ -91,10 +91,10 @@ public class AdminController {
 		    	 return Diagnostic_centerservice.viewDiagnostic_center();
 		     }
 		     
-		     @DeleteMapping("/removeCenter/{center_id}")
-		     public String removeDiagnostic_center(@PathVariable int center_id)
+		     @DeleteMapping("/removeCenter/{centreid}")
+		     public String removeDiagnostic_center(@PathVariable int centreid)
 		     {
-		    	 Diagnostic_centerservice.removeCenter(center_id);
+		    	 Diagnostic_centerservice.removeCenter(centreid);
 		    	 return "Diagnostic_center Details Removed";
 		     }
 		     
@@ -130,10 +130,10 @@ public class AdminController {
 			    	 return testservice.viewTest();
 			     }
 			     
-			     @DeleteMapping("/removeTest/{test_id}")
-			     public String removeTest(@PathVariable int test_id)
+			     @DeleteMapping("/removeTest/{testid}")
+			     public String removeTest(@PathVariable int testid)
 			     {
-			    	 testservice.removeTest(test_id);
+			    	 testservice.removeTest(testid);
 			    	 return "Test Details Removed";
 			     }
 			     

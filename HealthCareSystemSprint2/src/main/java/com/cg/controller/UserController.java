@@ -71,5 +71,14 @@ public class UserController {
 	    	 return u;
 	     }
 	     
+	     
+	     /*
+	     @PutMapping("/loginUser")
+		 	public String LoginUser(@RequestBody Users user)
+		 	{
+		 		 return userservice.LoginUser(user);
+		 	}*/
+	     
+	     
 	    
 }

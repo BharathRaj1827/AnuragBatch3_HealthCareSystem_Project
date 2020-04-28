@@ -11,7 +11,7 @@ public interface AppointmentService {
 
 	void setUdao(AppointmentRepository udao);
 
-	Appointment viewAppointment(int appointment_id);
+	Appointment viewAppointment(int appointmentid);
 
 	List<Appointment> viewAppointment();
 

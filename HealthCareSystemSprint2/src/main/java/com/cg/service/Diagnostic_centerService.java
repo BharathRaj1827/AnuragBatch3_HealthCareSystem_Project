@@ -15,6 +15,6 @@ public interface Diagnostic_centerService {
 
 	Diagnostic_center addCenter(Diagnostic_center center);
 
-	void removeCenter(int center_id);
+	void removeCenter(int centreid);
 
 }

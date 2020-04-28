@@ -22,17 +22,17 @@ import javax.persistence.OneToOne;
 
 public class Appointment {
 	@Id
-	private int appointment_id;	
-	private String appointment_status;
-	private Date date_time;
+	private int appointmentid;	
+	private String appointmentstatus;
+	private Date datetime;
 	
 	
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="appointment_id")
+	@JoinColumn(name="appointmentid")
 	private Users users;
 	
 	@ManyToOne
-	@JoinColumn(name="center_id")
+	@JoinColumn(name="centreid")
 	private Diagnostic_center diagnostic_center;
 	
 	
@@ -54,23 +54,23 @@ public class Appointment {
 		this.diagnostic_center = diagnostic_center;
 	}
 	
-	public int getAppointment_id() {
-		return appointment_id;
+	public int getAppointmentid() {
+		return appointmentid;
 	}
-	public void setAppointment_id(int appointment_id) {
-		this.appointment_id = appointment_id;
+	public void setAppointmentid(int appointmentid) {
+		this.appointmentid = appointmentid;
 	}
-	public String getAppointment_status() {
-		return appointment_status;
+	public String getAppointmentstatus() {
+		return appointmentstatus;
 	}
-	public void setAppointment_status(String appointment_status) {
-		this.appointment_status = appointment_status;
+	public void setAppointmentstatus(String appointmentstatus) {
+		this.appointmentstatus = appointmentstatus;
 	}
-	public Date getDate_time() {
-		return date_time;
+	public Date getDatetime() {
+		return datetime;
 	}
-	public void setDate_time(Date date_time) {
-		this.date_time = date_time;
+	public void setDatetime(Date datetime) {
+		this.datetime = datetime;
 	}
 	
 }

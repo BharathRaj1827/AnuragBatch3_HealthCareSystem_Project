@@ -15,47 +15,38 @@ public class UserServiceImpl implements UserService
      @Autowired
      UserRepository udao;
  
-
-	/* (non-Javadoc)
-	 * @see com.cg.service.UserService#setUdao(com.cg.dao.UserRepository)
-	 */
+ 
+     
 	@Override
 	public void setUdao(UserRepository udao) { this.udao=udao; }
-     
-     /* (non-Javadoc)
-	 * @see com.cg.service.UserService#viewUser(int)
-	 */
-    @Override
+    
+	
+
 	@Transactional(readOnly=true)
+    
      public Users viewUser(int userid)
      {
     	 return udao.findById(userid).get();
      }
      
-     /* (non-Javadoc)
-	 * @see com.cg.service.UserService#viewUser()
-	 */
-    @Override
+    
+
 	@Transactional(readOnly=true)
      public List<Users> viewUser()
      {
     	 return udao.findAll();
      }
-     
-     /* (non-Javadoc)
-	 * @see com.cg.service.UserService#addUser(com.cg.bean.Userdata)
-	 */
-    @Override
+    
+    
+    
 	@Transactional
      public Users addUser(Users user)
      {
     	 return udao.save(user);
      }
      
-     /* (non-Javadoc)
-	 * @see com.cg.service.UserService#updateUser(com.cg.bean.Userdata)
-	 */
-    @Override
+    
+    
 	@Transactional
      public Users updateUser(Users u)
      {
@@ -73,17 +64,13 @@ public class UserServiceImpl implements UserService
     	 
      }
      
-     /* (non-Javadoc)
-	 * @see com.cg.service.UserService#deleteUser(int)
-	 */
-    @Override
+   
+    
 	@Transactional
      public void deleteUser(int userid)
      {
     	  udao.deleteById(userid);
      }
-    
-    
-    
+   
     
 }
