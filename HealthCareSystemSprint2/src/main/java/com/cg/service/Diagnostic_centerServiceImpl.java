@@ -27,9 +27,9 @@ public class Diagnostic_centerServiceImpl implements Diagnostic_centerService
      
      
 	@Transactional
-     public Diagnostic_center addCenter(Diagnostic_center center )
+     public void addCenter(Diagnostic_center center )
      {
-    	 return udao.save(center);
+    	  udao.save(center);
      }
      
     

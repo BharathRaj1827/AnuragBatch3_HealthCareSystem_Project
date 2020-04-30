@@ -13,7 +13,7 @@ public interface TestService {
 
 	List<Test> viewTest();
 
-	Test addTest(Test test);
+	void addTest(Test test);
 
 	void removeTest(int testid);
 

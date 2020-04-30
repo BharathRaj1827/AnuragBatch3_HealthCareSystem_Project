@@ -14,12 +14,19 @@ import javax.persistence.Table;
 @Table(name = "Users")
 public class Users{
 		@Id
+		@Column(name="userid")
 		private int userid;
+		@Column(name="name")
 		private String name;
+		@Column(name="age")
 		private int age;
+		@Column(name="gender")
 		private String gender;
+		@Column(name="phonenumber")
 		private long phonenumber;
+		@Column(name="password")
 		private String password;
+		@Column(name="email")
 		private String email;
 		
 
@@ -71,23 +78,12 @@ public class Users{
 			this.email = email;
 		}
 		
-		
-		/*
-		@OneToOne(cascade=CascadeType.ALL)
-		@JoinColumn(name="user_id")
-		private Appointment appointment;
-		*/
-		
-		
-		/*
 		public Appointment getAppointment() {
 			return appointment;
 		}
 		public void setAppointment(Appointment appointment) {
 			this.appointment = appointment;
-		}*/
-		
-		
+		}
 		
 	}
 

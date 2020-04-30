@@ -25,9 +25,9 @@ public class TestServiceImpl implements TestService
      
    
 	@Transactional
-     public Test addTest(Test test)
+     public void addTest(Test test)
      {
-    	 return udao.save(test);
+    	 udao.save(test);
      }
      
      @Transactional

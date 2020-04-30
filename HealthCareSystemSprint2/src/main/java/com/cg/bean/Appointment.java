@@ -22,8 +22,11 @@ import javax.persistence.OneToOne;
 
 public class Appointment {
 	@Id
+	@Column(name="appointmentid")
 	private int appointmentid;	
+	@Column(name="appointmentstatus")
 	private String appointmentstatus;
+	@Column(name="datetime")
 	private Date datetime;
 	
 	
@@ -31,15 +34,10 @@ public class Appointment {
 	@JoinColumn(name="appointmentid")
 	private Users users;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinColumn(name="centreid")
 	private Diagnostic_center diagnostic_center;
 	
-	
-	/*
-	@OneToOne(mappedBy="appointment")
-	private Userdata userdata;
-	*/ 
 	
 	public Users getUsers() {
 		return users;

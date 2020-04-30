@@ -21,7 +21,7 @@ import com.cg.service.UserService;
 
 @RestController
 @RequestMapping("/user")
-//@CrossOrigin("http://localhost:4200")
+@CrossOrigin("http://localhost:4200")
 
 public class UserController {
 	
@@ -33,8 +33,7 @@ public class UserController {
 	 @PostMapping(value="/makeAppointment")
      public Appointment addAppointment(@RequestBody()Appointment appointment)
      {
-		 Appointment  a= appointmentservice.addAppointment(appointment);
-    	 return a;
+		 return appointmentservice.addAppointment(appointment);
      }
 	 
 	
@@ -47,8 +46,8 @@ public class UserController {
 	     @PostMapping(value="/addUser")
 	     public Users addUser(@RequestBody()Users user)
 	     {
-	    	 Users  u= userservice.addUser(user);
-	    	 return u;
+	    	 return userservice.addUser(user);
+	    	
 	     }
 	     
 	     @GetMapping(value="/getAllUsers",produces="application/json")
@@ -67,18 +66,8 @@ public class UserController {
 	     @PutMapping("/updateUser")
 	     public Users updateUser(@RequestBody Users user)
 	     {
-	    	 Users u=userservice.updateUser(user);
-	    	 return u;
+	    	 return userservice.updateUser(user);
+	    	 
 	     }
-	     
-	     
-	     /*
-	     @PutMapping("/loginUser")
-		 	public String LoginUser(@RequestBody Users user)
-		 	{
-		 		 return userservice.LoginUser(user);
-		 	}*/
-	     
-	     
-	    
+	     	    
 }

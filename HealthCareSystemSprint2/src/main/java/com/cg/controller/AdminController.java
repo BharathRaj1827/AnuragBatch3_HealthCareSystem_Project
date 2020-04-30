@@ -39,6 +39,13 @@ public class AdminController {
 	 @Autowired
      TestService testservice;
 	 
+	 
+	 @PutMapping("/approveAppointment")
+     public Appointment updateAppoinment(@RequestBody Appointment appointment)
+     {
+    	 return appointmentservice.updateAppointment(appointment);
+     }
+	 
 	
 	 @GetMapping(value="/getAppointment/{appointmentid}",produces="application/json")
 	     public Appointment viewAppointment(@PathVariable int appointmentid)
@@ -52,25 +59,7 @@ public class AdminController {
 	     {
 	    	 return appointmentservice.viewAppointment();
 	     }
-	     
-	     /*
-	     @DeleteMapping("/deleteUser/{userid}")
-	     public String deleteUser(@PathVariable int userid)
-	     {
-	    	 userservice.deleteUser(userid);
-	    	 return "User Details Deleted";
-	     }*/
-	     
-	     @PutMapping("/approveAppointment")
-	     public Appointment updateAppoinment(@RequestBody Appointment appointment)
-	     {
-	    	 Appointment a=appointmentservice.updateAppointment(appointment);
-	    	 return a;
-	     }
-	     
-	     
-	     
-		  
+	    
 		 /*
 		 @GetMapping(value="/getUser/{userid}",produces="application/json")
 		     public Userdata viewUser(@PathVariable int userid)
@@ -78,11 +67,12 @@ public class AdminController {
 		    	 return userservice.viewUser(userid);
 		     }*/
 		     
+	     
 		     @PostMapping(value="/addCenter")
-		     public Diagnostic_center addCenter(@RequestBody()Diagnostic_center center)
+		     public String addCenter(@RequestBody()Diagnostic_center center)
 		     {
-		    	 Diagnostic_center  dc= Diagnostic_centerservice.addCenter(center);
-		    	 return dc;
+		    	 Diagnostic_centerservice.addCenter(center);
+		    	 return "Center added";	 
 		     }
 		     
 		     @GetMapping(value="/getAllCenters",produces="application/json")
@@ -98,30 +88,11 @@ public class AdminController {
 		    	 return "Diagnostic_center Details Removed";
 		     }
 		     
-		     /*
-		     @PutMapping("/updateUser")
-		     public Userdata updateUser(@RequestBody Userdata user)
-		     {
-		    	 Userdata u=userservice.updateUser(user);
-		    	 return u;
-		     }*/
-
-		     
-		     
-		    
-			  
-			 /*
-			 @GetMapping(value="/getUser/{userid}",produces="application/json")
-			     public Userdata viewUser(@PathVariable int userid)
-			     {
-			    	 return userservice.viewUser(userid);
-			     }*/
-			     
 			     @PostMapping(value="/addTest")
-			     public Test addTest(@RequestBody()Test test)
+			     public String addTest(@RequestBody()Test test)
 			     {
-			    	 Test  t= testservice.addTest(test);
-			    	 return t;
+			    	 testservice.addTest(test);
+			    	 return "Test added";	 
 			     }
 			     
 			     @GetMapping(value="/getAllTests",produces="application/json")
@@ -136,12 +107,25 @@ public class AdminController {
 			    	 testservice.removeTest(testid);
 			    	 return "Test Details Removed";
 			     }
-			     
-			     /*
-			     @PutMapping("/updateUser")
-			     public Userdata updateUser(@RequestBody Userdata user)
-			     {
-			    	 Userdata u=userservice.updateUser(user);
-			    	 return u;
-			     }*/ 
 } 
+
+
+
+
+/*
+@PutMapping("/updateUser")
+public Userdata updateUser(@RequestBody Userdata user)
+{
+	 Userdata u=userservice.updateUser(user);
+	 return u;
+}*/ 
+
+
+/*
+@GetMapping(value="/getUser/{userid}",produces="application/json")
+    public Userdata viewUser(@PathVariable int userid)
+    {
+   	 return userservice.viewUser(userid);
+    }*/
+    
+

@@ -13,5 +13,5 @@ import com.cg.bean.Users;
 public interface UserRepository extends JpaRepository<Users,Serializable>
 {
 
-
+	
 }

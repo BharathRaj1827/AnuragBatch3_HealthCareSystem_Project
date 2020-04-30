@@ -13,7 +13,7 @@ public interface Diagnostic_centerService {
 
 	List<Diagnostic_center> viewDiagnostic_center();
 
-	Diagnostic_center addCenter(Diagnostic_center center);
+	void addCenter(Diagnostic_center center);
 
 	void removeCenter(int centreid);
 
