@@ -28,8 +28,12 @@ public class Appointment {
 	private String appointmentstatus;
 	@Column(name="datetime")
 	private Date datetime;
+	@Column(name="centrenumber")
+	private int centrenumber;
 	
 	
+	
+	/*
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="appointmentid")
 	private Users users;
@@ -51,7 +55,14 @@ public class Appointment {
 	public void setDiagnostic_center(Diagnostic_center diagnostic_center) {
 		this.diagnostic_center = diagnostic_center;
 	}
+	*/
 	
+	public int getCentrenumber() {
+		return centrenumber;
+	}
+	public void setCentrenumber(int centrenumber) {
+		this.centrenumber = centrenumber;
+	}
 	public int getAppointmentid() {
 		return appointmentid;
 	}

@@ -29,11 +29,11 @@ public class Users{
 		@Column(name="email")
 		private String email;
 		
-
+/*
 		@OneToOne(mappedBy="users")
 		private Appointment appointment;
 		
-		
+		*/
 		
 		public int getUserid() {
 			return userid;
@@ -78,12 +78,13 @@ public class Users{
 			this.email = email;
 		}
 		
+		/*
 		public Appointment getAppointment() {
 			return appointment;
 		}
 		public void setAppointment(Appointment appointment) {
 			this.appointment = appointment;
 		}
-		
+		*/
 	}
 

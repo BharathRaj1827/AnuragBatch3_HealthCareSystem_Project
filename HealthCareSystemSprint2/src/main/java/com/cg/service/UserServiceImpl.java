@@ -5,52 +5,60 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.cg.bean.Appointment;
+import com.cg.bean.Test;
 import com.cg.bean.Users;
+import com.cg.dao.AdminRepository;
+import com.cg.dao.AppointmentRepository;
+import com.cg.dao.Diagnostic_centerRepository;
+import com.cg.dao.TestRepository;
 import com.cg.dao.UserRepository;
 
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService
-{
-     @Autowired
-     UserRepository udao;
- 
- 
-     
-	@Override
-	public void setUdao(UserRepository udao) { this.udao=udao; }
-    
+{ 
+	@Autowired
+    private AdminRepository ar;
+	@Autowired
+    private UserRepository ur; 
+	@Autowired
+    private Diagnostic_centerRepository dr;
+	@Autowired
+    private TestRepository tr; 
+	@Autowired
+    private AppointmentRepository ap;
 	
-
-	@Transactional(readOnly=true)
-    
+	
+	/*
+     @Override
      public Users viewUser(int userid)
      {
-    	 return udao.findById(userid).get();
+    	 return ur.findById(userid).get();
      }
-     
     
 
-	@Transactional(readOnly=true)
+     @Override
      public List<Users> viewUser()
      {
     	 return udao.findAll();
      }
+    */
     
     
-    
-	@Transactional
+     @Override
      public Users addUser(Users user)
      {
-    	 return udao.save(user);
+    	 return ur.save(user);
      }
      
     
     
-	@Transactional
+     @Override
      public Users updateUser(Users u)
      {
-    		Users ud=udao.findById(u.getUserid()).get();
+    		Users ud=ur.findById(u.getUserid()).get();
     		if(ud!=null)
     		{
     			ud.setName(u.getName());
@@ -60,17 +68,43 @@ public class UserServiceImpl implements UserService
     			ud.setGender(u.getGender());
     			ud.setAge(u.getAge());
     		}
-    		return udao.save(ud);
+    		return ur.save(ud);
     	 
      }
      
    
     
-	@Transactional
+     @Override
      public void deleteUser(int userid)
      {
-    	  udao.deleteById(userid);
+    	  ur.deleteById(userid);
      }
 	  
-    
+	@Override
+	public Users validate(String uname, String pwd) {
+		return ur.validate(uname, pwd);
+	}
+
+
+
+	@Override
+	public List<Test> viewTest(int centreid) {
+		return tr.findAllById(centreid);
+	}
+   
+	
+	@Override
+	public Appointment viewAppointment(int appointmentid)
+     {
+    	 return ap.findById(appointmentid).get();
+     }
+     
+	
+	@Override
+	public Appointment addAppointment(Appointment appointment)
+     {
+    	 return ap.save(appointment);
+     }
+     
+
 }

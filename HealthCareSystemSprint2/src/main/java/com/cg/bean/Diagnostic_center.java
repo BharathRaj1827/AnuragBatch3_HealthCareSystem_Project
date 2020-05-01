@@ -35,7 +35,7 @@ public class Diagnostic_center {
 	private String centreAdd;
 	
 	
-
+/*
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinColumn(name="centreid",referencedColumnName="centreid")
 	private List<Test> test= new ArrayList<Test>();
@@ -48,6 +48,7 @@ public class Diagnostic_center {
 		this.test = test;
 	}
 	
+	*/
 	
 	public int getCentreid() {
 		return centreid;

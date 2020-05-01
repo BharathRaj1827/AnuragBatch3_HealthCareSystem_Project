@@ -3,6 +3,8 @@ package com.cg.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.bean.Appointment;
+import com.cg.bean.Test;
 import com.cg.bean.Users;
-import com.cg.service.AppointmentService;
 import com.cg.service.UserService;
 
 
@@ -26,23 +28,31 @@ import com.cg.service.UserService;
 public class UserController {
 	
 	 @Autowired
-     UserService userservice;
-	 @Autowired
-	 AppointmentService appointmentservice;
+     private UserService userservice;
+	
 	 
 	 @PostMapping(value="/makeAppointment")
      public Appointment addAppointment(@RequestBody()Appointment appointment)
      {
-		 return appointmentservice.addAppointment(appointment);
+		 return userservice.addAppointment(appointment);
      }
 	 
-	
+	 @GetMapping(value="/getAppointment/{appointmentid}")
+     public Appointment viewAppointment(@PathVariable("appointmentid") int appointmentid)
+     {
+    	 return userservice.viewAppointment(appointmentid);
+     }
+	 
+	 
+	 
+	/*
 	  @GetMapping(value="/getUser/{userid}",produces="application/json")
 	     public Users viewUser(@PathVariable int userid)
 	     {
 	    	 return userservice.viewUser(userid);
 	     }
-	     
+	     */
+	 
 	     @PostMapping(value="/addUser")
 	     public Users addUser(@RequestBody()Users user)
 	     {
@@ -50,11 +60,8 @@ public class UserController {
 	    	
 	     }
 	     
-	     @GetMapping(value="/getAllUsers",produces="application/json")
-	     public List<Users> viewUser()
-	     {
-	    	 return userservice.viewUser();
-	     }
+	   
+	     
 	     
 	     @DeleteMapping("/deleteUser/{userid}")
 	     public String deleteUser(@PathVariable int userid)
@@ -69,5 +76,21 @@ public class UserController {
 	    	 return userservice.updateUser(user);
 	    	 
 	     }
+	     
+	     @GetMapping(value="/getAllTests/{centreid}")
+	     public List<Test> viewTest(@PathVariable("centreid") int centreid)
+	     {
+	    	 return userservice.viewTest(centreid);
+	     }
+	     
+	     
+	     @GetMapping("/valid/{name}/{password}")
+	 	public ResponseEntity<Users> validate(@PathVariable("name") String uname, @PathVariable("password") String pwd) {
+	 		Users us = userservice.validate(uname, pwd);
+	 		ResponseEntity<Users> res = new ResponseEntity<Users>(us,HttpStatus.OK);
+	 		return res;
+	 	}
+	     
+	     
 	     	    
 }

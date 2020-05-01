@@ -2,6 +2,9 @@ package com.cg.bean;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+
+import java.sql.Date;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -21,6 +24,10 @@ public class Test {
 	private int testid;
 	@Column(name="testname")
 	private String testname;
+	@Column(name="centrenum")
+	private int centrenum;
+	
+	
 	
 	/*
 	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
@@ -29,6 +36,12 @@ public class Test {
 	*/
 	
 
+public int getCentrenum() {
+		return centrenum;
+	}
+	public void setCentrenum(int centrenum) {
+		this.centrenum = centrenum;
+	}
 public int getTestid() {
 	return testid;
 }
@@ -41,6 +54,9 @@ public String getTestname() {
 public void setTestname(String testname) {
 	this.testname = testname;
 }
+
+
+
 /*
 public Diagnostic_center getDiagnostic_center() {
 	return diagnostic_center;

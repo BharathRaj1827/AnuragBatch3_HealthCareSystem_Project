@@ -4,6 +4,8 @@ package com.cg.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,14 +16,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cg.bean.Admins;
 import com.cg.bean.Appointment;
 import com.cg.bean.Diagnostic_center;
 import com.cg.bean.Test;
-import com.cg.bean.Users;
-import com.cg.service.AppointmentService;
-import com.cg.service.Diagnostic_centerService;
-import com.cg.service.TestService;
-import com.cg.service.UserServiceImpl;
+import com.cg.service.AdminService;
+
+
+
 
 
 @RestController
@@ -29,103 +31,95 @@ import com.cg.service.UserServiceImpl;
 @CrossOrigin("http://localhost:4200")
 
 public class AdminController {
-	
-	 @Autowired
-	 AppointmentService appointmentservice;
 	 
 	 @Autowired
-	 Diagnostic_centerService Diagnostic_centerservice;
-	 
-	 @Autowired
-     TestService testservice;
+     private AdminService adminservice;
 	 
 	 
 	 @PutMapping("/approveAppointment")
      public Appointment updateAppoinment(@RequestBody Appointment appointment)
      {
-    	 return appointmentservice.updateAppointment(appointment);
+    	 return adminservice.updateAppointment(appointment);
      }
 	 
-	
-	 @GetMapping(value="/getAppointment/{appointmentid}",produces="application/json")
-	     public Appointment viewAppointment(@PathVariable int appointmentid)
+	/*
+	 @GetMapping(value="/getAppointment/{appointmentid}")
+	     public Appointment viewAppointment(@PathVariable("appointmentid") int appointmentid)
 	     {
-	    	 return appointmentservice.viewAppointment(appointmentid);
+	    	 return adminservice.viewAppointment(appointmentid);
 	     }
-	     
+	  */ 
 
-	     @GetMapping(value="/getAllAppointments",produces="application/json")
-	     public List<Appointment> viewAppointment()
+	     @GetMapping(value="/getAllAppointments/{centreid}")
+	     public List<Appointment> viewAppointment1(@PathVariable("centreid") int centreid)
 	     {
-	    	 return appointmentservice.viewAppointment();
+	    	 return adminservice.viewAppointment1(centreid);
 	     }
-	    
-		 /*
-		 @GetMapping(value="/getUser/{userid}",produces="application/json")
-		     public Userdata viewUser(@PathVariable int userid)
-		     {
-		    	 return userservice.viewUser(userid);
-		     }*/
-		     
+	         
+	     
+	     
 	     
 		     @PostMapping(value="/addCenter")
 		     public String addCenter(@RequestBody()Diagnostic_center center)
 		     {
-		    	 Diagnostic_centerservice.addCenter(center);
+		    	 adminservice.addCenter(center);
 		    	 return "Center added";	 
 		     }
 		     
-		     @GetMapping(value="/getAllCenters",produces="application/json")
+		     @GetMapping(value="/getAllCenters")
 		     public List<Diagnostic_center> viewDiagnostic_center()
 		     {
-		    	 return Diagnostic_centerservice.viewDiagnostic_center();
+		    	 return adminservice.viewDiagnostic_center();
 		     }
+		    
+		     
+		     
+		     
 		     
 		     @DeleteMapping("/removeCenter/{centreid}")
 		     public String removeDiagnostic_center(@PathVariable int centreid)
 		     {
-		    	 Diagnostic_centerservice.removeCenter(centreid);
+		    	 adminservice.removeCenter(centreid);
 		    	 return "Diagnostic_center Details Removed";
 		     }
 		     
-			     @PostMapping(value="/addTest")
-			     public String addTest(@RequestBody()Test test)
+			     @PostMapping(value="/addTest/{centreid}")
+			     public String addTest(@PathVariable int centreid,@RequestBody()Test test)
 			     {
-			    	 testservice.addTest(test);
+			    	 adminservice.addTest(centreid);
 			    	 return "Test added";	 
 			     }
 			     
-			     @GetMapping(value="/getAllTests",produces="application/json")
+			     @GetMapping(value="/getAllTests")
 			     public List<Test> viewTest()
 			     {
-			    	 return testservice.viewTest();
+			    	 return adminservice.viewTest();
 			     }
+			     
+			    
+			     
+			     
+			     
+			     
 			     
 			     @DeleteMapping("/removeTest/{testid}")
 			     public String removeTest(@PathVariable int testid)
 			     {
-			    	 testservice.removeTest(testid);
+			    	 adminservice.removeTest(testid);
 			    	 return "Test Details Removed";
 			     }
+			     
+			     
+			     @GetMapping("/valid/{adminname}/{adminpassword}")
+			 	public ResponseEntity<Admins> validate(@PathVariable("adminname") String aname, @PathVariable("adminpassword") String apwd) {
+			 		Admins a= adminservice.validate(aname, apwd);
+			 		ResponseEntity<Admins> res = new ResponseEntity<Admins>(a,HttpStatus.OK);
+			 		return res;
+			 	}
+			     
+			     
+			     
+			     
 } 
 
-
-
-
-/*
-@PutMapping("/updateUser")
-public Userdata updateUser(@RequestBody Userdata user)
-{
-	 Userdata u=userservice.updateUser(user);
-	 return u;
-}*/ 
-
-
-/*
-@GetMapping(value="/getUser/{userid}",produces="application/json")
-    public Userdata viewUser(@PathVariable int userid)
-    {
-   	 return userservice.viewUser(userid);
-    }*/
-    
 

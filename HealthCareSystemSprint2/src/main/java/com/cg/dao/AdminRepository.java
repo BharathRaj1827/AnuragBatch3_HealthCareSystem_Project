@@ -1,20 +1,22 @@
 package com.cg.dao;
 
 
+
 import java.io.Serializable;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.cg.bean.Users;
+import com.cg.bean.Admins;
 
 
 
-public interface UserRepository extends JpaRepository<Users,Serializable>
+public interface AdminRepository extends JpaRepository<Admins,Integer>
 {
 
-	@Query("select a from Users a where name=?1 and password=?2 ")
-	public Users validate(String uname, String pwd);
 	
+	@Query("select a from Admins a where adminname=?1 and adminpassword=?2 ")
+	Admins validate(String aname, String apwd);
+
 }
