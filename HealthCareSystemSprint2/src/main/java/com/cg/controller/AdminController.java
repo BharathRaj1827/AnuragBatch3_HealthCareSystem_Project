@@ -22,10 +22,6 @@ import com.cg.bean.Diagnostic_center;
 import com.cg.bean.Test;
 import com.cg.service.AdminService;
 
-
-
-
-
 @RestController
 @RequestMapping("/admin")
 @CrossOrigin("http://localhost:4200")
@@ -35,6 +31,14 @@ public class AdminController {
 	 @Autowired
      private AdminService adminservice;
 	 
+	    
+     @GetMapping("/valid/{adminname}/{adminpassword}")
+ 	public ResponseEntity<Admins> validate(@PathVariable("adminname") String aname, @PathVariable("adminpassword") String apwd) {
+ 		Admins a= adminservice.validate(aname, apwd);
+ 		ResponseEntity<Admins> res = new ResponseEntity<Admins>(a,HttpStatus.OK);
+ 		return res;
+ 	}
+     
 	 
 	 @PutMapping("/approveAppointment")
      public Appointment updateAppoinment(@RequestBody Appointment appointment)
@@ -50,10 +54,16 @@ public class AdminController {
 	     }
 	  */ 
 
-	     @GetMapping(value="/getAllAppointments/{centreid}")
-	     public List<Appointment> viewAppointment1(@PathVariable("centreid") int centreid)
+	     @GetMapping(value="/getAllAppointments/{centrenumber}")
+	     public List<Appointment> viewAppointment1(@PathVariable("centrenumber") int centrenumber)
 	     {
-	    	 return adminservice.viewAppointment1(centreid);
+	    	 return adminservice.viewAppointment1(centrenumber);
+	     }
+	         
+	     @GetMapping(value="/getAllAppointments")
+	     public List<Appointment> viewAppointment2()
+	     {
+	    	 return adminservice.viewAppointment2();
 	     }
 	         
 	     
@@ -71,10 +81,7 @@ public class AdminController {
 		     {
 		    	 return adminservice.viewDiagnostic_center();
 		     }
-		    
-		     
-		     
-		     
+		  
 		     
 		     @DeleteMapping("/removeCenter/{centreid}")
 		     public String removeDiagnostic_center(@PathVariable int centreid)
@@ -83,23 +90,28 @@ public class AdminController {
 		    	 return "Diagnostic_center Details Removed";
 		     }
 		     
+		     /*
 			     @PostMapping(value="/addTest/{centreid}")
 			     public String addTest(@PathVariable int centreid,@RequestBody()Test test)
 			     {
 			    	 adminservice.addTest(centreid);
 			    	 return "Test added";	 
 			     }
+			    */ 
+			     
+			     @PostMapping(value="/addTest")
+			     public String addTest(@RequestBody()Test test)
+			     {
+			    	 adminservice.addTest(test);
+			    	 return "Test added";	 
+			     }
+			     
 			     
 			     @GetMapping(value="/getAllTests")
 			     public List<Test> viewTest()
 			     {
 			    	 return adminservice.viewTest();
 			     }
-			     
-			    
-			     
-			     
-			     
 			     
 			     
 			     @DeleteMapping("/removeTest/{testid}")
@@ -109,17 +121,7 @@ public class AdminController {
 			    	 return "Test Details Removed";
 			     }
 			     
-			     
-			     @GetMapping("/valid/{adminname}/{adminpassword}")
-			 	public ResponseEntity<Admins> validate(@PathVariable("adminname") String aname, @PathVariable("adminpassword") String apwd) {
-			 		Admins a= adminservice.validate(aname, apwd);
-			 		ResponseEntity<Admins> res = new ResponseEntity<Admins>(a,HttpStatus.OK);
-			 		return res;
-			 	}
-			     
-			     
-			     
-			     
+			 
 } 
 
 

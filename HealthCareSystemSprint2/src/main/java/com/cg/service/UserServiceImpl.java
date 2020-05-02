@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cg.bean.Appointment;
+import com.cg.bean.Diagnostic_center;
 import com.cg.bean.Test;
 import com.cg.bean.Users;
 import com.cg.dao.AdminRepository;
@@ -88,8 +89,8 @@ public class UserServiceImpl implements UserService
 
 
 	@Override
-	public List<Test> viewTest(int centreid) {
-		return tr.findAllById(centreid);
+	public List<Test> viewTest(int centrenum) {
+		return tr.findAllById(centrenum);
 	}
    
 	
@@ -106,5 +107,10 @@ public class UserServiceImpl implements UserService
     	 return ap.save(appointment);
      }
      
+	 @Override
+     public List<Diagnostic_center> viewDiagnostic_centers()
+     {
+    	 return dr.findAll();
+     }
 
 }

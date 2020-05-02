@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.bean.Appointment;
+import com.cg.bean.Diagnostic_center;
 import com.cg.bean.Test;
 import com.cg.bean.Users;
 import com.cg.service.UserService;
@@ -29,6 +30,15 @@ public class UserController {
 	
 	 @Autowired
      private UserService userservice;
+	 
+	 
+	  @GetMapping("/valid/{name}/{password}")
+	 	public ResponseEntity<Users> validate(@PathVariable("name") String uname, @PathVariable("password") String pwd) {
+	 		Users us = userservice.validate(uname, pwd);
+	 		ResponseEntity<Users> res = new ResponseEntity<Users>(us,HttpStatus.OK);
+	 		return res;
+	 	}
+	     
 	
 	 
 	 @PostMapping(value="/makeAppointment")
@@ -77,20 +87,18 @@ public class UserController {
 	    	 
 	     }
 	     
-	     @GetMapping(value="/getAllTests/{centreid}")
-	     public List<Test> viewTest(@PathVariable("centreid") int centreid)
+	     @GetMapping(value="/getAllCenters")
+	     public List<Diagnostic_center> viewDiagnostic_centers()
 	     {
-	    	 return userservice.viewTest(centreid);
+	    	 return userservice.viewDiagnostic_centers();
 	     }
 	     
+	     @GetMapping(value="/getAllTests/{centrenum}")
+	     public List<Test> viewTest(@PathVariable("centrenum") int centrenum)
+	     {
+	    	 return userservice.viewTest(centrenum);
+	     }
 	     
-	     @GetMapping("/valid/{name}/{password}")
-	 	public ResponseEntity<Users> validate(@PathVariable("name") String uname, @PathVariable("password") String pwd) {
-	 		Users us = userservice.validate(uname, pwd);
-	 		ResponseEntity<Users> res = new ResponseEntity<Users>(us,HttpStatus.OK);
-	 		return res;
-	 	}
-	     
-	     
+	          
 	     	    
 }

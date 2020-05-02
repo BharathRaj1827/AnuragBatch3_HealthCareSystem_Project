@@ -64,9 +64,9 @@ public class AdminServiceImpl implements AdminService
      
    
     @Override
-     public void addTest(int centreid)
+     public void addTest(Test test)
      {
-    	 tr.save(centreid);
+    	 tr.save(test);
      }
      
     @Override
@@ -77,9 +77,16 @@ public class AdminServiceImpl implements AdminService
     
     
     @Override
-    public List<Appointment> viewAppointment1(int centreid)
+    public List<Appointment> viewAppointment1(int centrenumber)
     {
-      	 return ap.findAllById(centreid);
+      	 return ap.findAllById(centrenumber);
+    }
+    
+    
+    @Override
+    public List<Appointment> viewAppointment2()
+    {
+      	 return ap.findAll();
     }
      
 	

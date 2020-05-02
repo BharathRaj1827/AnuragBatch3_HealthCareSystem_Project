@@ -30,7 +30,10 @@ public class Appointment {
 	private Date datetime;
 	@Column(name="centrenumber")
 	private int centrenumber;
-	
+	@Column(name="testnames")
+	private String testnames;
+	//@Column(name="usersid")
+	//private int usersid;
 	
 	
 	/*
@@ -56,7 +59,19 @@ public class Appointment {
 		this.diagnostic_center = diagnostic_center;
 	}
 	*/
-	
+	/*
+	public int getUsersid() {
+		return usersid;
+	}
+	public void setUsersid(int usersid) {
+		this.usersid = usersid;
+	}*/
+	public String getTestnames() {
+		return testnames;
+	}
+	public void setTestnames(String testnames) {
+		this.testnames = testnames;
+	}
 	public int getCentrenumber() {
 		return centrenumber;
 	}

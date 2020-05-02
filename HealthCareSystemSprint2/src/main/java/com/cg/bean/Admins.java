@@ -13,12 +13,20 @@ import javax.persistence.Table;
 @Table(name = "Admins")
 public class Admins {
 	@Id
+	@Column(name="adminid")
+	private String adminid;
 	@Column(name="adminname")
 	private String adminname;
 	@Column(name="adminpassword")
 	private String adminpassword;
 	
 	
+	public String getAdminid() {
+		return adminid;
+	}
+	public void setAdminid(String adminid) {
+		this.adminid = adminid;
+	}
 	public String getAdminname() {
 		return adminname;
 	}
@@ -32,5 +40,4 @@ public class Admins {
 		this.adminpassword = adminpassword;
 	}
 	
-	
-	}
+}

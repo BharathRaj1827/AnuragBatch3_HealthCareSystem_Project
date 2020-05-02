@@ -18,10 +18,8 @@ public interface TestRepository extends JpaRepository<Test,Serializable>
 	@Query("select t from Test t where centrenum=?1")
 	List<Test> findAllById(int centreid);
 
-	
-	//List<Test> viewTest(int centreid);
-
-	void save(int centreid);
+	@Query("select t from Test t")
+	List<Test> viewTest();
 
 
 }

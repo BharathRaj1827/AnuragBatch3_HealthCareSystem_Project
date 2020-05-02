@@ -17,5 +17,8 @@ public interface Diagnostic_centerRepository extends JpaRepository<Diagnostic_ce
 {
 	@Query("select d from Diagnostic_center d")
 	List<Diagnostic_center> viewDiagnostic_center();
+	
+	@Query("select d from Diagnostic_center d")
+	List<Diagnostic_center> viewDiagnostic_centers();
 
 }

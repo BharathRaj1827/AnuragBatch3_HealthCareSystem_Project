@@ -20,11 +20,13 @@ public interface AdminService {
 
 	void addCenter(Diagnostic_center center);
 	void removeCenter(int centreid);
-	void addTest(int centreid);
+	void addTest(Test test);
 	void removeTest(int testid);
 
 	Appointment updateAppointment(Appointment a);
-	List<Appointment> viewAppointment1(int centreid);
+	List<Appointment> viewAppointment1(int centrenumber);
+
+	List<Appointment> viewAppointment2();
 
 
 	
