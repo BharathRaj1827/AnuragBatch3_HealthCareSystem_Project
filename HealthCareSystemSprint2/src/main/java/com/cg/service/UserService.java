@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cg.bean.Appointment;
 import com.cg.bean.Diagnostic_center;
-import com.cg.bean.Test;
+import com.cg.bean.Testclass;
 import com.cg.bean.Users;
 import com.cg.dao.AppointmentRepository;
 import com.cg.dao.UserRepository;
@@ -17,7 +17,7 @@ public interface UserService {
 	//Users viewUser(int userid);
 
 	//List<Users> viewUser();
-	List<Test> viewTest(int centrenum);
+	List<Testclass> viewTestclass(int centrenum);
 
 	Users addUser(Users user);
 	Users updateUser(Users user);

@@ -17,8 +17,8 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="Test")
-public class Test {
+@Table(name="Testclass")
+public class Testclass {
 	@Id
 	@Column(name="testid")
 	private int testid;

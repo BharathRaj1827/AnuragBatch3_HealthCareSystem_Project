@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.bean.Appointment;
 import com.cg.bean.Diagnostic_center;
-import com.cg.bean.Test;
+import com.cg.bean.Testclass;
 import com.cg.bean.Users;
 import com.cg.service.UserService;
 
@@ -94,9 +94,9 @@ public class UserController {
 	     }
 	     
 	     @GetMapping(value="/getAllTests/{centrenum}")
-	     public List<Test> viewTest(@PathVariable("centrenum") int centrenum)
+	     public List<Testclass> viewTestclass(@PathVariable("centrenum") int centrenum)
 	     {
-	    	 return userservice.viewTest(centrenum);
+	    	 return userservice.viewTestclass(centrenum);
 	     }
 	     
 	          

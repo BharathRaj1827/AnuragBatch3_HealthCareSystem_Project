@@ -38,13 +38,13 @@ public class Diagnostic_center {
 /*
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinColumn(name="centreid",referencedColumnName="centreid")
-	private List<Test> test= new ArrayList<Test>();
+	private List<Testclass> test= new ArrayList<Testclass>();
 	
 	
-	public List<Test> getTest() {
+	public List<Testclass> getTest() {
 		return test;
 	}
-	public void setTest(List<Test> test) {
+	public void setTest(List<Testclass> test) {
 		this.test = test;
 	}
 	

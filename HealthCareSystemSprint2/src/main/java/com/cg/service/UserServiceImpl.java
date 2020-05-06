@@ -7,12 +7,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cg.bean.Appointment;
 import com.cg.bean.Diagnostic_center;
-import com.cg.bean.Test;
+import com.cg.bean.Testclass;
 import com.cg.bean.Users;
 import com.cg.dao.AdminRepository;
 import com.cg.dao.AppointmentRepository;
 import com.cg.dao.Diagnostic_centerRepository;
-import com.cg.dao.TestRepository;
+import com.cg.dao.TestclassRepository;
 import com.cg.dao.UserRepository;
 
 
@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService
 	@Autowired
     private Diagnostic_centerRepository dr;
 	@Autowired
-    private TestRepository tr; 
+    private TestclassRepository tr; 
 	@Autowired
     private AppointmentRepository ap;
 	
@@ -89,7 +89,7 @@ public class UserServiceImpl implements UserService
 
 
 	@Override
-	public List<Test> viewTest(int centrenum) {
+	public List<Testclass> viewTestclass(int centrenum) {
 		return tr.findAllById(centrenum);
 	}
    

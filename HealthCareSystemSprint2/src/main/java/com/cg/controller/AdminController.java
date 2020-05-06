@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cg.bean.Admins;
 import com.cg.bean.Appointment;
 import com.cg.bean.Diagnostic_center;
-import com.cg.bean.Test;
+import com.cg.bean.Testclass;
 import com.cg.service.AdminService;
 
 @RestController
@@ -92,33 +92,33 @@ public class AdminController {
 		     
 		     /*
 			     @PostMapping(value="/addTest/{centreid}")
-			     public String addTest(@PathVariable int centreid,@RequestBody()Test test)
+			     public String addTest(@PathVariable int centreid,@RequestBody()Testclass test)
 			     {
 			    	 adminservice.addTest(centreid);
-			    	 return "Test added";	 
+			    	 return "Testclass added";	 
 			     }
 			    */ 
 			     
 			     @PostMapping(value="/addTest")
-			     public String addTest(@RequestBody()Test test)
+			     public String addTestclass(@RequestBody()Testclass testclass)
 			     {
-			    	 adminservice.addTest(test);
-			    	 return "Test added";	 
+			    	 adminservice.addTestclass(testclass);
+			    	 return "Testclass added";	 
 			     }
 			     
 			     
 			     @GetMapping(value="/getAllTests")
-			     public List<Test> viewTest()
+			     public List<Testclass> viewTestclass()
 			     {
-			    	 return adminservice.viewTest();
+			    	 return adminservice.viewTestclass();
 			     }
 			     
 			     
 			     @DeleteMapping("/removeTest/{testid}")
-			     public String removeTest(@PathVariable int testid)
+			     public String removeTestclass(@PathVariable int testid)
 			     {
-			    	 adminservice.removeTest(testid);
-			    	 return "Test Details Removed";
+			    	 adminservice.removeTestclass(testid);
+			    	 return "Testclass Details Removed";
 			     }
 			     
 			 

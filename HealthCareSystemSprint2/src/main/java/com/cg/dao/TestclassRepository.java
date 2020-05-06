@@ -9,17 +9,17 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.cg.bean.Appointment;
-import com.cg.bean.Test;
+import com.cg.bean.Testclass;
 
 
 
-public interface TestRepository extends JpaRepository<Test,Serializable>
+public interface TestclassRepository extends JpaRepository<Testclass,Serializable>
 {
-	@Query("select t from Test t where centrenum=?1")
-	List<Test> findAllById(int centreid);
+	@Query("select t from Testclass t where centrenum=?1")
+	List<Testclass> findAllById(int centreid);
 
-	@Query("select t from Test t")
-	List<Test> viewTest();
+	@Query("select t from Testclass t")
+	List<Testclass> viewTest();
 
 
 }

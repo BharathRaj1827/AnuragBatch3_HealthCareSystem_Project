@@ -9,11 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.cg.bean.Admins;
 import com.cg.bean.Appointment;
 import com.cg.bean.Diagnostic_center;
-import com.cg.bean.Test;
+import com.cg.bean.Testclass;
 import com.cg.dao.AdminRepository;
 import com.cg.dao.AppointmentRepository;
 import com.cg.dao.Diagnostic_centerRepository;
-import com.cg.dao.TestRepository;
+import com.cg.dao.TestclassRepository;
 
 @Service
 @Transactional
@@ -25,7 +25,7 @@ public class AdminServiceImpl implements AdminService
 	 @Autowired
      private Diagnostic_centerRepository dr;
 	 @Autowired
-     private TestRepository tr; 
+     private TestclassRepository tr; 
 	 @Autowired
      private AppointmentRepository ap;
 	
@@ -57,20 +57,20 @@ public class AdminServiceImpl implements AdminService
 	
 	
     @Override 
-	public List<Test> viewTest()
+	public List<Testclass> viewTestclass()
      {
     	 return tr.findAll();
      }
      
    
     @Override
-     public void addTest(Test test)
+     public void addTestclass(Testclass testclass)
      {
-    	 tr.save(test);
+    	 tr.save(testclass);
      }
      
     @Override
-     public void removeTest(int testid)
+     public void removeTestclass(int testid)
      {
     	  tr.deleteById(testid);
      }
