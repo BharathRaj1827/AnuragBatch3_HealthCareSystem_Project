@@ -29,6 +29,21 @@ public class Users{
 		@Column(name="email")
 		private String email;
 		
+		
+		
+		public Users(){}
+		public Users(int userid, String name, int age, String gender, long phonenumber, String password, String email) {
+			this.userid = userid;
+			this.name = name;
+			this.age = age;
+			this.gender = gender;
+			this.phonenumber = phonenumber;
+			this.password = password;
+			this.email = email;
+		}
+		
+		
+		
 /*
 		@OneToOne(mappedBy="users")
 		private Appointment appointment;

@@ -21,6 +21,12 @@ public class Admins {
 	private String adminpassword;
 	
 	
+	public Admins() {}
+public Admins(String adminid, String adminname, String adminpassword) {
+		this.adminid = adminid;
+		this.adminname = adminname;
+		this.adminpassword = adminpassword;
+	}
 	public String getAdminid() {
 		return adminid;
 	}

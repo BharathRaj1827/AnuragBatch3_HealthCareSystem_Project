@@ -18,9 +18,9 @@ public interface AdminService {
 	List<Diagnostic_center> viewDiagnostic_center();
 	List<Testclass> viewTestclass();
 
-	void addCenter(Diagnostic_center center);
+	Diagnostic_center addCenter(Diagnostic_center center);
 	void removeCenter(int centreid);
-	void addTestclass(Testclass testclass);
+	Testclass addTestclass(Testclass testclass);
 	void removeTestclass(int testid);
 
 	Appointment updateAppointment(Appointment a);

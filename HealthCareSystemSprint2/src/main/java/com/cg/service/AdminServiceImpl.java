@@ -44,9 +44,9 @@ public class AdminServiceImpl implements AdminService
      
      
      @Override
-     public void addCenter(Diagnostic_center center)
+     public Diagnostic_center addCenter(Diagnostic_center center)
      {
-    	  dr.save(center);
+    	  return dr.save(center);
      }
      
      @Override
@@ -64,9 +64,9 @@ public class AdminServiceImpl implements AdminService
      
    
     @Override
-     public void addTestclass(Testclass testclass)
+     public Testclass addTestclass(Testclass testclass)
      {
-    	 tr.save(testclass);
+    	 return tr.save(testclass);
      }
      
     @Override

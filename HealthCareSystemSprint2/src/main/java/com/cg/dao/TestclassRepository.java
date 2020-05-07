@@ -15,11 +15,10 @@ import com.cg.bean.Testclass;
 
 public interface TestclassRepository extends JpaRepository<Testclass,Serializable>
 {
-	@Query("select t from Testclass t where centrenum=?1")
+	@Query("select t from Testclass t where t.centrenum=?1")
 	List<Testclass> findAllById(int centreid);
 
 	@Query("select t from Testclass t")
 	List<Testclass> viewTest();
-
 
 }

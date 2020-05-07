@@ -50,6 +50,15 @@ public class Diagnostic_center {
 	
 	*/
 	
+	public Diagnostic_center() {}
+	public Diagnostic_center(int centreid, String centrename, long centrePhno, String centreAdd) {
+		
+		this.centreid = centreid;
+		this.centrename = centrename;
+		this.centrePhno = centrePhno;
+		this.centreAdd = centreAdd;
+	}
+	
 	public int getCentreid() {
 		return centreid;
 	}

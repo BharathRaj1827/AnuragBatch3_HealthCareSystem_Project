@@ -26,8 +26,15 @@ public class Testclass {
 	private String testname;
 	@Column(name="centrenum")
 	private int centrenum;
+
 	
-	
+	public Testclass() {}
+	public Testclass(int testid, String testname, int centrenum) {
+		
+		this.testid = testid;
+		this.testname = testname;
+		this.centrenum = centrenum;
+	}
 	
 	/*
 	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
