@@ -19,6 +19,7 @@ import com.cg.bean.Appointment;
 import com.cg.bean.Diagnostic_center;
 import com.cg.bean.Testclass;
 import com.cg.bean.Users;
+import com.cg.exceptions.UserNotFoundException;
 import com.cg.service.UserService;
 
 
@@ -33,7 +34,7 @@ public class UserController {
 	 
 	 
 	  @GetMapping("/valid/{name}/{password}")
-	 	public ResponseEntity<Users> validate(@PathVariable("name") String uname, @PathVariable("password") String pwd) {
+	 	public ResponseEntity<Users> validate(@PathVariable("name") String uname, @PathVariable("password") String pwd) throws UserNotFoundException{
 	 		Users us = userservice.validate(uname, pwd);
 	 		ResponseEntity<Users> res = new ResponseEntity<Users>(us,HttpStatus.OK);
 	 		return res;

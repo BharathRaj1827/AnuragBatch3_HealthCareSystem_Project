@@ -20,6 +20,7 @@ import com.cg.bean.Admins;
 import com.cg.bean.Appointment;
 import com.cg.bean.Diagnostic_center;
 import com.cg.bean.Testclass;
+import com.cg.exceptions.UserNotFoundException;
 import com.cg.service.AdminService;
 
 @RestController
@@ -33,7 +34,7 @@ public class AdminController {
 	 
 	    
      @GetMapping("/valid/{adminname}/{adminpassword}")
- 	public ResponseEntity<Admins> validate(@PathVariable("adminname") String aname, @PathVariable("adminpassword") String apwd) {
+ 	public ResponseEntity<Admins> validate(@PathVariable("adminname") String aname, @PathVariable("adminpassword") String apwd) throws UserNotFoundException{
  		Admins a= adminservice.validate(aname, apwd);
  		ResponseEntity<Admins> res = new ResponseEntity<Admins>(a,HttpStatus.OK);
  		return res;
