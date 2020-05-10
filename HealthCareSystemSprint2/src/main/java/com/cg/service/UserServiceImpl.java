@@ -95,9 +95,9 @@ public class UserServiceImpl implements UserService
    
 	
 	@Override
-	public Appointment viewAppointment(int appointmentid)
+	public List<Appointment> viewAppointment(int usersid)
      {
-    	 return ap.findById(appointmentid).get();
+    	 return ap.findAllById(usersid);
      }
      
 	

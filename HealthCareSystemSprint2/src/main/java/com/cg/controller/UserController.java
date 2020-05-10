@@ -48,21 +48,12 @@ public class UserController {
 		 return userservice.addAppointment(appointment);
      }
 	 
-	 @GetMapping(value="/getAppointment/{appointmentid}")
-     public Appointment viewAppointment(@PathVariable("appointmentid") int appointmentid)
+	 @GetMapping(value="/getAppointment/{usersid}")
+     public List<Appointment> viewAppointment(@PathVariable("usersid") int usersid)
      {
-    	 return userservice.viewAppointment(appointmentid);
+    	 return userservice.viewAppointment(usersid);
      }
 	 
-	 
-	 
-	/*
-	  @GetMapping(value="/getUser/{userid}",produces="application/json")
-	     public Users viewUser(@PathVariable int userid)
-	     {
-	    	 return userservice.viewUser(userid);
-	     }
-	     */
 	 
 	     @PostMapping(value="/addUser")
 	     public Users addUser(@RequestBody()Users user)

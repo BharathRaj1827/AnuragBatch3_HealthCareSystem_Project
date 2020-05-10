@@ -35,51 +35,27 @@ public class Appointment {
 	private int centrenumber;
 	@Column(name="testnames")
 	private String testnames;
+	@Column(name="usersid")
+	private int usersid;
 	
 	
 	public Appointment() {}
-	public Appointment(int appointmentid, String appointmentstatus, Date datetime, int centrenumber, String testnames) {
+	public Appointment(int appointmentid, String appointmentstatus, Date datetime, int centrenumber, String testnames,int usersid) {
 		
 		this.appointmentid = appointmentid;
 		this.appointmentstatus = appointmentstatus;
 		this.datetime = datetime;
 		this.centrenumber = centrenumber;
 		this.testnames = testnames;
+		this.usersid=usersid;
 	}
-	//@Column(name="usersid")
-	//private int usersid;
 	
-	
-	/*
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="appointmentid")
-	private Users users;
-	
-	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	@JoinColumn(name="centreid")
-	private Diagnostic_center diagnostic_center;
-	
-	
-	public Users getUsers() {
-		return users;
-	}
-	public void setUsers(Users users) {
-		this.users = users;
-	}
-	public Diagnostic_center getDiagnostic_center() {
-		return diagnostic_center;
-	}
-	public void setDiagnostic_center(Diagnostic_center diagnostic_center) {
-		this.diagnostic_center = diagnostic_center;
-	}
-	*/
-	/*
 	public int getUsersid() {
 		return usersid;
 	}
 	public void setUsersid(int usersid) {
 		this.usersid = usersid;
-	}*/
+	}
 	public String getTestnames() {
 		return testnames;
 	}

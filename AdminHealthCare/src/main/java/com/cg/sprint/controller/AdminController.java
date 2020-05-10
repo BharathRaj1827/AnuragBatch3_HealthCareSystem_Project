@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cg.sprint.exceptions.IdNotFoundException;
+import com.cg.sprint.exceptions.UserNotFoundException;
 import com.cg.sprint.bean.Admins;
 import com.cg.sprint.bean.Appointment;
 import com.cg.sprint.bean.Diagnostic_center;
@@ -32,94 +34,68 @@ public class AdminController {
 	 
 	    
      @GetMapping("/valid/{adminname}/{adminpassword}")
- 	public ResponseEntity<Admins> validate(@PathVariable("adminname") String aname, @PathVariable("adminpassword") String apwd) {
+ 	 public ResponseEntity<Admins> validate(@PathVariable("adminname") String aname, @PathVariable("adminpassword") String apwd) throws UserNotFoundException{
  		Admins a= adminservice.validate(aname, apwd);
  		ResponseEntity<Admins> res = new ResponseEntity<Admins>(a,HttpStatus.OK);
  		return res;
- 	}
-     
-	 
+ 	 }
 	 @PutMapping("/approveAppointment")
      public Appointment updateAppoinment(@RequestBody Appointment appointment)
      {
     	 return adminservice.updateAppointment(appointment);
      }
-	 
-	/*
-	 @GetMapping(value="/getAppointment/{appointmentid}")
-	     public Appointment viewAppointment(@PathVariable("appointmentid") int appointmentid)
-	     {
-	    	 return adminservice.viewAppointment(appointmentid);
-	     }
-	  */ 
-
-	     @GetMapping(value="/getAllAppointments/{centrenumber}")
-	     public List<Appointment> viewAppointment1(@PathVariable("centrenumber") int centrenumber)
-	     {
-	    	 return adminservice.viewAppointment1(centrenumber);
-	     }
-	         
-	     @GetMapping(value="/getAllAppointments")
-	     public List<Appointment> viewAppointment2()
-	     {
-	    	 return adminservice.viewAppointment2();
-	     }
-	         
-	     
-	     
-	     
-		     @PostMapping(value="/addCenter")
-		     public String addCenter(@RequestBody()Diagnostic_center center)
-		     {
-		    	 adminservice.addCenter(center);
-		    	 return "Center added";	 
-		     }
-		     
-		     @GetMapping(value="/getAllCenters")
-		     public List<Diagnostic_center> viewDiagnostic_center()
-		     {
-		    	 return adminservice.viewDiagnostic_center();
-		     }
-		  
-		     
-		     @DeleteMapping("/removeCenter/{centreid}")
-		     public String removeDiagnostic_center(@PathVariable int centreid)
-		     {
-		    	 adminservice.removeCenter(centreid);
-		    	 return "Diagnostic_center Details Removed";
-		     }
-		     
-		     /*
-			     @PostMapping(value="/addTest/{centreid}")
-			     public String addTest(@PathVariable int centreid,@RequestBody()Testclass test)
-			     {
-			    	 adminservice.addTest(centreid);
-			    	 return "Testclass added";	 
-			     }
-			    */ 
-			     
-			     @PostMapping(value="/addTest")
-			     public String addTestclass(@RequestBody()Testclass testclass)
-			     {
-			    	 adminservice.addTestclass(testclass);
-			    	 return "Testclass added";	 
-			     }
-			     
-			     
-			     @GetMapping(value="/getAllTests")
-			     public List<Testclass> viewTestclass()
-			     {
-			    	 return adminservice.viewTestclass();
-			     }
-			     
-			     
-			     @DeleteMapping("/removeTest/{testid}")
-			     public String removeTestclass(@PathVariable int testid)
-			     {
-			    	 adminservice.removeTestclass(testid);
-			    	 return "Testclass Details Removed";
-			     }
-			     
-			 
+	 @GetMapping(value="/getAllAppointments")
+     public List<Appointment> viewAppointment2()
+     {
+    	 return adminservice.viewAppointment2();
+     }
+	 @PostMapping(value="/addCenter")
+     public String addCenter(@RequestBody()Diagnostic_center center)
+     {
+    	 adminservice.addCenter(center);
+    	 return "Center added successfully";	 
+     }
+     @GetMapping(value="/getAllCenters")
+     public List<Diagnostic_center> viewDiagnostic_center()
+     {
+    	 return adminservice.viewDiagnostic_center();
+     }
+     @DeleteMapping("/removeCenter/{centreid}")
+     public String removeDiagnostic_center(@PathVariable int centreid) throws IdNotFoundException
+     {
+    	 adminservice.removeCenter(centreid);
+    	 return "Diagnostic_center details removed successfully";
+     }
+     @PostMapping(value="/addTest")
+     public String addTestclass(@RequestBody()Testclass testclass)
+     {
+    	 adminservice.addTestclass(testclass);
+    	 return "Test added successfully";	 
+     }    
+     @GetMapping(value="/getAllTests")
+     public List<Testclass> viewTestclass()
+     {
+    	 return adminservice.viewTestclass();
+     }
+     @DeleteMapping("/removeTest/{testid}") 
+     public String removeTestclass(@PathVariable int testid) throws IdNotFoundException
+     {
+    	 adminservice.removeTestclass(testid);
+    	 return "Test details removed successfully";
+     }
 } 
 
+
+     
+    
+	    
+
+	 
+	
+	         
+	     
+	         
+	     
+	     
+	     
+		    

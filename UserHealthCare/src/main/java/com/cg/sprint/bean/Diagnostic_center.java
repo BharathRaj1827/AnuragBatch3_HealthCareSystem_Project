@@ -5,10 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
-
-
-
 @Entity
 @Table(name="Diagnostic_center")
 public class Diagnostic_center {
@@ -34,22 +30,6 @@ public class Diagnostic_center {
 	}
 	
 	
-	
-/*
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	@JoinColumn(name="centreid",referencedColumnName="centreid")
-	private List<Testclass> test= new ArrayList<Testclass>();
-	
-	
-	public List<Testclass> getTest() {
-		return test;
-	}
-	public void setTest(List<Testclass> test) {
-		this.test = test;
-	}
-	
-	*/
-	
 	public int getCentreid() {
 		return centreid;
 	}
@@ -73,7 +53,5 @@ public class Diagnostic_center {
 	}
 	public void setCentreAdd(String centreAdd) {
 		this.centreAdd = centreAdd;
-	}
-	
-		
+	}	
 }

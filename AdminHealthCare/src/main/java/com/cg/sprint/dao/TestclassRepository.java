@@ -10,7 +10,6 @@ import org.springframework.data.jpa.repository.Query;
 import com.cg.sprint.bean.Testclass;
 
 
-
 public interface TestclassRepository extends JpaRepository<Testclass,Serializable>
 {
 	@Query("select t from Testclass t where t.centrenum=?1")

@@ -24,7 +24,7 @@ public interface UserService {
 	void deleteUser(int userid);
 
 	Appointment addAppointment(Appointment appointment);
-	Appointment viewAppointment(int appointmentid);
+	List<Appointment> viewAppointment(int usersid);
 
 	List<Diagnostic_center> viewDiagnostic_centers();
 

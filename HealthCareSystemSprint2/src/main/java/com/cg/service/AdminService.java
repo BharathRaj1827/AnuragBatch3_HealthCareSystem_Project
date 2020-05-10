@@ -24,7 +24,6 @@ public interface AdminService {
 	void removeTestclass(int testid);
 
 	Appointment updateAppointment(Appointment a);
-	List<Appointment> viewAppointment1(int centrenumber);
 	List<Appointment> viewAppointment2();
 
 

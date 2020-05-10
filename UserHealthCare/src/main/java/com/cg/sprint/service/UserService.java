@@ -7,23 +7,14 @@ import com.cg.sprint.bean.Diagnostic_center;
 import com.cg.sprint.bean.Testclass;
 import com.cg.sprint.bean.Users;
 
-
-
 public interface UserService {
 	
 	Users validate(String uname, String pwd);
 	List<Testclass> viewTestclass(int centrenum);
-
 	Users addUser(Users user);
 	Users updateUser(Users user);
 	void deleteUser(int userid);
-
 	Appointment addAppointment(Appointment appointment);
-	Appointment viewAppointment(int appointmentid);
-
+	List<Appointment> viewAppointment(int usersid);
 	List<Diagnostic_center> viewDiagnostic_centers();
-
-
-	
-
 }

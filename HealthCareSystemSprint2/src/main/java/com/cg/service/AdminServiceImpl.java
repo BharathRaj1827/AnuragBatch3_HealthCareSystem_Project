@@ -77,13 +77,6 @@ public class AdminServiceImpl implements AdminService
     
     
     @Override
-    public List<Appointment> viewAppointment1(int centrenumber)
-    {
-      	 return ap.findAllById(centrenumber);
-    }
-    
-    
-    @Override
     public List<Appointment> viewAppointment2()
     {
       	 return ap.findAll();

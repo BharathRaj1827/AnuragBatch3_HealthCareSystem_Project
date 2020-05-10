@@ -25,13 +25,6 @@ public class Testclass {
 		this.centrenum = centrenum;
 	}
 	
-	
-	/*
-	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	@JoinColumn(name="centreid",referencedColumnName="centreid")
-	private Diagnostic_center diagnostic_center;
-	*/
-	
 
 public int getCentrenum() {
 		return centrenum;

@@ -47,20 +47,7 @@ public class AdminController {
     	 return adminservice.updateAppointment(appointment);
      }
 	 
-	/*
-	 @GetMapping(value="/getAppointment/{appointmentid}")
-	     public Appointment viewAppointment(@PathVariab
-	     le("appointmentid") int appointmentid)
-	     {
-	    	 return adminservice.viewAppointment(appointmentid);
-	     }
-	  */ 
-
-	     @GetMapping(value="/getAllAppointments/{centrenumber}")
-	     public List<Appointment> viewAppointment1(@PathVariable("centrenumber") int centrenumber)
-	     {
-	    	 return adminservice.viewAppointment1(centrenumber);
-	     }
+	
 	         
 	     @GetMapping(value="/getAllAppointments")
 	     public List<Appointment> viewAppointment2()

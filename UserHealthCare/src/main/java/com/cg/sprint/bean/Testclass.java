@@ -25,18 +25,11 @@ public class Testclass {
 		this.centrenum = centrenum;
 	}
 	
-	/*
-	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	@JoinColumn(name="centreid",referencedColumnName="centreid")
-	private Diagnostic_center diagnostic_center;
-	*/
-	
-
 public int getCentrenum() {
-		return centrenum;
+	return centrenum;
 	}
-	public void setCentrenum(int centrenum) {
-		this.centrenum = centrenum;
+public void setCentrenum(int centrenum) {
+	this.centrenum = centrenum;
 	}
 public int getTestid() {
 	return testid;
@@ -50,14 +43,4 @@ public String getTestname() {
 public void setTestname(String testname) {
 	this.testname = testname;
 }
-
-
-
-/*
-public Diagnostic_center getDiagnostic_center() {
-	return diagnostic_center;
-}
-public void setDiagnostic_center(Diagnostic_center diagnostic_center) {
-	this.diagnostic_center = diagnostic_center;
-}*/
 }

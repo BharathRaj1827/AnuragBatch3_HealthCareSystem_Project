@@ -21,22 +21,6 @@ public class Diagnostic_center {
 	private String centreAdd;
 	
 	
-/*
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	@JoinColumn(name="centreid",referencedColumnName="centreid")
-	private List<Testclass> test= new ArrayList<Testclass>();
-	
-	
-	public List<Testclass> getTest() {
-		return test;
-	}
-	public void setTest(List<Testclass> test) {
-		this.test = test;
-	}
-	
-	*/
-	
-	
 	public Diagnostic_center() {}
 	public Diagnostic_center(int centreid, String centrename, long centrePhno, String centreAdd) {
 		

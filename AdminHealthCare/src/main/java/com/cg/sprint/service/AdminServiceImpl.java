@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.cg.sprint.bean.Admins;
 import com.cg.sprint.bean.Appointment;
 import com.cg.sprint.bean.Diagnostic_center;
@@ -35,85 +34,51 @@ public class AdminServiceImpl implements AdminService
 	public Admins validate(String aname, String apwd) {
 		return ar.validate(aname, apwd);
 	}
-	
-    	
-	 @Override
-     public List<Diagnostic_center> viewDiagnostic_center()
-     {
-    	 return dr.findAll();
-     }
-     
-     
-     @Override
-     public Diagnostic_center addCenter(Diagnostic_center center)
-     {
-    	  return dr.save(center);
-     }
-     
-     @Override
-     public void removeCenter(int centreid)
-     {
-    	  dr.deleteById(centreid);
-     }
-	
-	
-    @Override 
+	@Override
+    public List<Diagnostic_center> viewDiagnostic_center()
+    {
+   	 return dr.findAll();
+    }
+    @Override
+    public Diagnostic_center addCenter(Diagnostic_center center)
+    {
+   	  return dr.save(center);
+    }
+    @Override
+    public void removeCenter(int centreid)
+    {
+   	  dr.deleteById(centreid);
+    }
+   @Override 
 	public List<Testclass> viewTestclass()
-     {
-    	 return tr.findAll();
-     }
-     
-   
-    @Override
-     public Testclass addTestclass(Testclass testclass)
-     {
-    	 return tr.save(testclass);
-     }
-     
-    @Override
-     public void removeTestclass(int testid)
-     {
-    	  tr.deleteById(testid);
-     }
-    
-    
-    @Override
-    public List<Appointment> viewAppointment1(int centrenumber)
     {
-      	 return ap.findAllById(centrenumber);
+   	 return tr.findAll();
     }
-    
-    
-    @Override
-    public List<Appointment> viewAppointment2()
+   @Override
+    public Testclass addTestclass(Testclass testclass)
     {
-      	 return ap.findAll();
-    }
-     
-	
-    @Override
-    public Appointment updateAppointment(Appointment a)
+   	 return tr.save(testclass);
+    } 
+   @Override
+    public void removeTestclass(int testid)
     {
-   	 Appointment ud=ap.findById(a.getAppointmentid()).get();
-   		if(ud!=null)
-   		{
-   			ud.setAppointmentstatus(a.getAppointmentstatus());
-   			ud.setDatetime(a.getDatetime());
-   		}
-   		return ap.save(ud);
+   	  tr.deleteById(testid);
     }
-
-    /*
- 	@Override
- 	public String updateCenter(Diagnostic_center d) {
- 		boolean bool = diagnostic_center.existsById(d.getCenterid());
- 		if(bool == true) {
- 			diagnostic_center.save(d);
- 			return "Center updated successfully!!";
- 		}
- 		else {
- 			return "center not updated";
- 		}
- 	}*/
-    	
+   @Override
+   public List<Appointment> viewAppointment2()
+   {
+     	 return ap.findAll();
+   }	
+   @Override
+   public Appointment updateAppointment(Appointment a)
+   {
+  	 Appointment ud=ap.findById(a.getAppointmentid()).get();
+  		if(ud!=null)
+  		{
+  			ud.setAppointmentstatus(a.getAppointmentstatus());
+  			ud.setDatetime(a.getDatetime());
+  		}
+  		return ap.save(ud);
+   }   	
 }
+	 
