@@ -1,21 +1,11 @@
-package com.cg.bean;
+package com.cg.sprint.bean;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 
 
@@ -23,22 +13,20 @@ import javax.persistence.OneToOne;
 @Table(name = "Appointment")
 
 public class Appointment {
-	
 	@Id
 	@Column(name="appointmentid")
 	private int appointmentid;	
 	@Column(name="appointmentstatus")
 	private String appointmentstatus;
 	@Column(name="datetime")
-	private Date datetime;
+	private SimpleDateFormat datetime;
 	@Column(name="centrenumber")
 	private int centrenumber;
 	@Column(name="testnames")
 	private String testnames;
 	
-	
 	public Appointment() {}
-	public Appointment(int appointmentid, String appointmentstatus, Date datetime, int centrenumber, String testnames) {
+	public Appointment(int appointmentid, String appointmentstatus, SimpleDateFormat datetime, int centrenumber, String testnames) {
 		
 		this.appointmentid = appointmentid;
 		this.appointmentstatus = appointmentstatus;
@@ -46,6 +34,8 @@ public class Appointment {
 		this.centrenumber = centrenumber;
 		this.testnames = testnames;
 	}
+	
+	
 	//@Column(name="usersid")
 	//private int usersid;
 	
@@ -104,10 +94,10 @@ public class Appointment {
 	public void setAppointmentstatus(String appointmentstatus) {
 		this.appointmentstatus = appointmentstatus;
 	}
-	public Date getDatetime() {
+	public SimpleDateFormat getDatetime() {
 		return datetime;
 	}
-	public void setDatetime(Date datetime) {
+	public void setDatetime(SimpleDateFormat datetime) {
 		this.datetime = datetime;
 	}
 	

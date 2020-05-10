@@ -1,5 +1,4 @@
-package com.cg.controller;
-
+package com.cg.sprint.controller;
 
 import java.util.List;
 
@@ -16,12 +15,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cg.bean.Admins;
-import com.cg.bean.Appointment;
-import com.cg.bean.Diagnostic_center;
-import com.cg.bean.Testclass;
-import com.cg.exceptions.UserNotFoundException;
-import com.cg.service.AdminService;
+import com.cg.sprint.bean.Admins;
+import com.cg.sprint.bean.Appointment;
+import com.cg.sprint.bean.Diagnostic_center;
+import com.cg.sprint.bean.Testclass;
+import com.cg.sprint.service.AdminService;
 
 @RestController
 @RequestMapping("/admin")
@@ -34,7 +32,7 @@ public class AdminController {
 	 
 	    
      @GetMapping("/valid/{adminname}/{adminpassword}")
- 	public ResponseEntity<Admins> validate(@PathVariable("adminname") String aname, @PathVariable("adminpassword") String apwd) throws UserNotFoundException{
+ 	public ResponseEntity<Admins> validate(@PathVariable("adminname") String aname, @PathVariable("adminpassword") String apwd) {
  		Admins a= adminservice.validate(aname, apwd);
  		ResponseEntity<Admins> res = new ResponseEntity<Admins>(a,HttpStatus.OK);
  		return res;
@@ -49,8 +47,7 @@ public class AdminController {
 	 
 	/*
 	 @GetMapping(value="/getAppointment/{appointmentid}")
-	     public Appointment viewAppointment(@PathVariab
-	     le("appointmentid") int appointmentid)
+	     public Appointment viewAppointment(@PathVariable("appointmentid") int appointmentid)
 	     {
 	    	 return adminservice.viewAppointment(appointmentid);
 	     }
@@ -125,5 +122,4 @@ public class AdminController {
 			     
 			 
 } 
-
 
