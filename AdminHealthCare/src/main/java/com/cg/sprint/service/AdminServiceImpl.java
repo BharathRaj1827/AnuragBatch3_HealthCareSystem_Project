@@ -45,9 +45,9 @@ public class AdminServiceImpl implements AdminService
    	  return dr.save(center);
     }
     @Override
-    public void removeCenter(int centreid)
+    public void removeCenter(String centreid)
     {
-   	  dr.deleteById(centreid);
+    	dr.deleteById(centreid);
     }
    @Override 
 	public List<Testclass> viewTestclass()
@@ -60,7 +60,7 @@ public class AdminServiceImpl implements AdminService
    	 return tr.save(testclass);
     } 
    @Override
-    public void removeTestclass(int testid)
+    public void removeTestclass(String testid)
     {
    	  tr.deleteById(testid);
     }

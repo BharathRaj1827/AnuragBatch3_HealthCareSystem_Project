@@ -13,8 +13,9 @@ public interface AppointmentRepository extends JpaRepository<Appointment,Integer
 {
 	
 	@Query("select a from Appointment a where a.usersid=?1")
-	List<Appointment> findAllById(int usersid);
+	List<Appointment> findAllById(String usersid);
 	@Query("select a from Appointment a")
 	List<Appointment> viewAppointment2();
-
+	@Query("select m.usersid from Appointment m where m.usersid=?1")
+	public List<String> checkUserIdEXists(String usersid);
 }

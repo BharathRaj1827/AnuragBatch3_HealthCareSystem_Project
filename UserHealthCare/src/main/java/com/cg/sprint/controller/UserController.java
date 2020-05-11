@@ -25,7 +25,7 @@ import com.cg.sprint.service.UserService;
 
 @RestController
 @RequestMapping("/user")
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin("http://localhost:4300")
 
 public class UserController {
 	
@@ -39,14 +39,27 @@ public class UserController {
 	 	ResponseEntity<Users> res = new ResponseEntity<Users>(us,HttpStatus.OK);
 	 	return res;
 	 }
+	/* 
 	 @PostMapping(value="/makeAppointment")
      public Appointment addAppointment(@RequestBody()Appointment appointment)
      {
 		 return userservice.addAppointment(appointment);
-     }
-	 
+     }*/
+
+		@PostMapping("/makeAppointment")
+		public ResponseEntity<Boolean> updateAppointment(@RequestBody Appointment app) {
+			Boolean exists = userservice.userIdFound(app.getUsersid());
+			if (exists) {
+				System.out.println(exists);
+				userservice.makeAppointment(app);
+				return new ResponseEntity<>(true, HttpStatus.OK);
+			} else {
+				throw new IdNotFoundException("Sorry! User Id exists");
+			}
+		}
+
 	 @GetMapping(value="/getAppointment/{usersid}")
-     public List<Appointment> viewAppointment(@PathVariable("usersid") int usersid) throws IdNotFoundException
+     public List<Appointment> viewAppointment(@PathVariable("usersid") String usersid) throws IdNotFoundException
      {
     	 return userservice.viewAppointment(usersid);
      }
@@ -56,25 +69,25 @@ public class UserController {
     	 return userservice.addUser(user);
     	
      }
-     @DeleteMapping("/deleteUser/{userid}")
-     public String deleteUser(@PathVariable int userid) throws IdNotFoundException
+   /*  @DeleteMapping("/deleteUser/{userid}")
+     public String deleteUser(@PathVariable String userid) throws IdNotFoundException
      {
     	 userservice.deleteUser(userid);
     	 return "User Details Deleted";
-     }
-     @PutMapping("/updateUser")
+     }*/
+     /*@PutMapping("/updateUser")
      public Users updateUser(@RequestBody Users user)
      {
     	 return userservice.updateUser(user);
     	 
-     }
+     }*/
      @GetMapping(value="/getAllCenters")
      public List<Diagnostic_center> viewDiagnostic_centers()
      {
     	 return userservice.viewDiagnostic_centers();
      }
      @GetMapping(value="/getAllTests/{centrenum}")
-     public List<Testclass> viewTestclass(@PathVariable("centrenum") int centrenum) throws IdNotFoundException
+     public List<Testclass> viewTestclass(@PathVariable("centrenum") String centrenum) throws IdNotFoundException
      {
     	 return userservice.viewTestclass(centrenum);
      }	     	    

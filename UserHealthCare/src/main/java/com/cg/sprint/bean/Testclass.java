@@ -2,39 +2,42 @@ package com.cg.sprint.bean;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 
 
 @Entity
 @Table(name="Testclass")
 public class Testclass {
 	@Id
-	@Column(name="testid")
-	private int testid;
+	private String testid;
 	@Column(name="testname")
 	private String testname;
 	@Column(name="centrenum")
-	private int centrenum;
+	private String centrenum;
 	
 	public Testclass() {}
-	public Testclass(int testid, String testname, int centrenum) {
+	public Testclass(String testid, String testname, String centrenum) {
 		
 		this.testid = testid;
 		this.testname = testname;
 		this.centrenum = centrenum;
 	}
 	
-public int getCentrenum() {
+public String getCentrenum() {
 	return centrenum;
 	}
-public void setCentrenum(int centrenum) {
+public void setCentrenum(String centrenum) {
 	this.centrenum = centrenum;
 	}
-public int getTestid() {
+public String getTestid() {
 	return testid;
 }
-public void setTestid(int testid) {
+public void setTestid(String testid) {
 	this.testid = testid;
 }
 public String getTestname() {

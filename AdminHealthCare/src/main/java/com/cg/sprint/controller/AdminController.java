@@ -25,7 +25,7 @@ import com.cg.sprint.service.AdminService;
 
 @RestController
 @RequestMapping("/admin")
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin("http://localhost:4300")
 
 public class AdminController {
 	 
@@ -61,7 +61,7 @@ public class AdminController {
     	 return adminservice.viewDiagnostic_center();
      }
      @DeleteMapping("/removeCenter/{centreid}")
-     public String removeDiagnostic_center(@PathVariable int centreid) throws IdNotFoundException
+     public String removeCenter(@PathVariable String centreid) throws IdNotFoundException
      {
     	 adminservice.removeCenter(centreid);
     	 return "Diagnostic_center details removed successfully";
@@ -78,7 +78,7 @@ public class AdminController {
     	 return adminservice.viewTestclass();
      }
      @DeleteMapping("/removeTest/{testid}") 
-     public String removeTestclass(@PathVariable int testid) throws IdNotFoundException
+     public String removeTestclass(@PathVariable String testid) throws IdNotFoundException
      {
     	 adminservice.removeTestclass(testid);
     	 return "Test details removed successfully";

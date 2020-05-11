@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService
     {
    	 return ur.save(user);
     }
-    @Override
+  /*  @Override
     public Users updateUser(Users u)
     {
    		Users ud=ur.findById(u.getUserid()).get();
@@ -51,35 +51,45 @@ public class UserServiceImpl implements UserService
    			ud.setAge(u.getAge());
    		}
    		return ur.save(ud);
-    }
-    @Override
-    public void deleteUser(int userid)
+    }*/
+   /* @Override
+    public void deleteUser(String userid)
     {
    	  ur.deleteById(userid);
-    }  
+    }  */
 	@Override
 	public Users validate(String uname, String pwd) {
 		return ur.validate(uname, pwd);
 	}
 	@Override
-	public List<Testclass> viewTestclass(int centrenum) {
+	public List<Testclass> viewTestclass(String centrenum) {
 		return tr.findAllById(centrenum);
 	}
 	@Override
-	public List<Appointment> viewAppointment(int usersid)
+	public List<Appointment> viewAppointment(String usersid)
     {
    	 return ap.findAllById(usersid);
     }
-	@Override
+	/*@Override
 	public Appointment addAppointment(Appointment appointment)
     {
    	 return ap.save(appointment);
-    }
+    }*/
+	public Boolean userIdFound(String usersid){
+		List<String> exists=ap.checkUserIdEXists(usersid);
+		Boolean value=exists.isEmpty();
+	return value;
+	}
+	@Override
+	public String makeAppointment(Appointment app) {
+		ap.save(app);
+		return "Appointment is registered, please await for confirmation";
+	}
 	@Override
     public List<Diagnostic_center> viewDiagnostic_centers()
     {
    	 return dr.findAll();
     }
-
+	
 }
 

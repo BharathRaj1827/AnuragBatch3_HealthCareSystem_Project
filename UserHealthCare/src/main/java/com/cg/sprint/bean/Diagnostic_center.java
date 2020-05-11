@@ -2,8 +2,11 @@ package com.cg.sprint.bean;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="Diagnostic_center")
@@ -11,7 +14,7 @@ public class Diagnostic_center {
 	
 	@Id
 	@Column(name="centreid")
-	private int centreid;
+	private String centreid;
 	@Column(name="centrename")
 	private String centrename;
 	@Column(name="centrePhno")
@@ -21,7 +24,7 @@ public class Diagnostic_center {
 	
 	
 	public Diagnostic_center() {}
-	public Diagnostic_center(int centreid, String centrename, long centrePhno, String centreAdd) {
+	public Diagnostic_center(String centreid, String centrename, long centrePhno, String centreAdd) {
 		
 		this.centreid = centreid;
 		this.centrename = centrename;
@@ -30,10 +33,10 @@ public class Diagnostic_center {
 	}
 	
 	
-	public int getCentreid() {
+	public String getCentreid() {
 		return centreid;
 	}
-	public void setCentreid(int centreid) {
+	public void setCentreid(String centreid) {
 		this.centreid = centreid;
 	}
 	public String getCentrename() {
