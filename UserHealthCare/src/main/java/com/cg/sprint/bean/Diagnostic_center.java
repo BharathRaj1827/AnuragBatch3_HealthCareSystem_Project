@@ -3,7 +3,9 @@ package com.cg.sprint.bean;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -12,8 +14,9 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name="Diagnostic_center")
 public class Diagnostic_center {
 	
-	@Id
-	@Column(name="centreid")
+	@Id@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
+	@SequenceGenerator(name="seq", initialValue=1, allocationSize=100)
+	@Column(name="centreid",nullable=false,updatable=false)	
 	private String centreid;
 	@Column(name="centrename")
 	private String centrename;

@@ -25,7 +25,7 @@ import com.cg.sprint.service.UserService;
 
 @RestController
 @RequestMapping("/user")
-@CrossOrigin("http://localhost:4300")
+@CrossOrigin("http://localhost:4200")
 
 public class UserController {
 	
