@@ -1,7 +1,5 @@
 package com.cg.sprint.bean;
 
-import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,13 +20,13 @@ public class Appointment {
 	private int appointmentid;	
 	@Column(name="appointmentstatus")
 	private boolean appointmentstatus;
-	@Column(name="datetime")
+	@Column(name="datetime",length=25)
 	private String datetime;
-	@Column(name="centrenumber")
+	@Column(name="centrenumber",length=10)
 	private String centrenumber;
-	@Column(name="testnames")
+	@Column(name="testnames",length=15)
 	private String testnames;
-	@Column(name="usersid")
+	@Column(name="usersid",length=10)
 	private String usersid;
 	
 	

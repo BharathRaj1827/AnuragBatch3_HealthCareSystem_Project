@@ -9,19 +9,19 @@ import javax.persistence.Table;
 @Table(name = "Users")
 public class Users{
 		@Id
-		@Column(name="userid")
+		@Column(name="userid",length=20)
 		private String userid;
-		@Column(name="name")
+		@Column(name="name",length=25)
 		private String name;
-		@Column(name="age")
+		@Column(name="age",length=3)
 		private int age;
-		@Column(name="gender")
+		@Column(name="gender",length=10)
 		private String gender;
-		@Column(name="phonenumber")
+		@Column(name="phonenumber",length=10)
 		private long phonenumber;
-		@Column(name="password")
+		@Column(name="password",length=20)
 		private String password;
-		@Column(name="email")
+		@Column(name="email",length=30)
 		private String email;
 		
         

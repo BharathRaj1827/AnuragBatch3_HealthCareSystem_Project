@@ -11,11 +11,11 @@ import javax.persistence.Table;
 @Table(name = "Admins")
 public class Admins {
 	@Id
-	@Column(name="adminid")
+	@Column(name="adminid",length=10)
 	private String adminid;
-	@Column(name="adminname")
+	@Column(name="adminname",length=25)
 	private String adminname;
-	@Column(name="adminpassword")
+	@Column(name="adminpassword",length=15)
 	private String adminpassword;
 	
 	

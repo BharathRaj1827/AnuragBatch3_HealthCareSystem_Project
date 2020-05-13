@@ -2,29 +2,22 @@ package com.cg.sprint.bean;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.GenericGenerator;
 
 
 @Entity
 @Table(name="Diagnostic_center")
 public class Diagnostic_center {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
-	@SequenceGenerator(name="seq", initialValue=1, allocationSize=100)
-	@Column(name="centreid",nullable=false,updatable=false)
+	@Id	
+    @Column(name="centreid",length=10)
 	private String centreid;
-	@Column(name="centrename")
+	@Column(name="centrename",length=25)
 	private String centrename; 
-	@Column(name="centrePhno")  
+	@Column(name="centrePhno",length=10)  
 	private long centrePhno;
-	@Column(name="centreAdd")
+	@Column(name="centreAdd",length=25)
 	private String centreAdd;
 	
 	

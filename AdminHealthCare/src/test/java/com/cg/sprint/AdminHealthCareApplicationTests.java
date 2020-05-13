@@ -5,9 +5,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.junit.Before;
@@ -116,12 +114,9 @@ class AdminHealthCareApplicationTests {
 	public void removeTestclass(){
 		Testclass testid = new Testclass("4","dengue","3");
 		tr.deleteById(4);
+		tr.save(testid);
 		verify(tr,Mockito.times(1)).deleteById(4);
 	}
-		/*adminService.removeTestclass(testid.getTestid());
-        verify(tr, times(1)).deleteById(testid.getTestid());
-	}*/
-	
 	
 
 	@Test

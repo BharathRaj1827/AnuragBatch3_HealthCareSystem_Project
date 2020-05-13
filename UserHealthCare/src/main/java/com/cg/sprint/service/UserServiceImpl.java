@@ -37,26 +37,7 @@ public class UserServiceImpl implements UserService
     {
    	 return ur.save(user);
     }
-  /*  @Override
-    public Users updateUser(Users u)
-    {
-   		Users ud=ur.findById(u.getUserid()).get();
-   		if(ud!=null)
-   		{
-   			ud.setName(u.getName());
-   			ud.setPassword(u.getPassword());
-   			ud.setPhonenumber(u.getPhonenumber());
-   			ud.setEmail(u.getEmail());
-   			ud.setGender(u.getGender());
-   			ud.setAge(u.getAge());
-   		}
-   		return ur.save(ud);
-    }*/
-   /* @Override
-    public void deleteUser(String userid)
-    {
-   	  ur.deleteById(userid);
-    }  */
+  
 	@Override
 	public Users validate(String uname, String pwd) {
 		return ur.validate(uname, pwd);
@@ -70,15 +51,11 @@ public class UserServiceImpl implements UserService
     {
    	 return ap.findAllById(usersid);
     }
-	/*@Override
-	public Appointment addAppointment(Appointment appointment)
-    {
-   	 return ap.save(appointment);
-    }*/
+	
 	public Boolean userIdFound(String usersid){
 		List<String> exists=ap.checkUserIdEXists(usersid);
-		Boolean value=exists.isEmpty();
-	return value;
+		 return exists.isEmpty();
+	
 	}
 	@Override
 	public String makeAppointment(Appointment app) {

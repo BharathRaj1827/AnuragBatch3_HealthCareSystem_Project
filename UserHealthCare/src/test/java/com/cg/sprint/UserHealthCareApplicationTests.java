@@ -1,12 +1,9 @@
 package com.cg.sprint;
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.junit.Before;
@@ -43,7 +40,6 @@ class UserHealthCareApplicationTests {
 		private AppointmentRepository ap;
 		
 		
-		
 		@InjectMocks
 		private UserServiceImpl userService;
 		
@@ -73,35 +69,9 @@ class UserHealthCareApplicationTests {
 			userService.addUser(user);
 			Mockito.verify(ur,Mockito.times(1)).save(user);
 		}
-			
-		
-		
-		
-		@Test
-		public void updateUser(){
-			Users user = new Users("2","manish",21,"male",9000000010L,"abe","mani@gmail.com");
-			ur.findById(1);
-			ur.save(user);
-	        verify(ur,Mockito. times(1)).save(user);
-		}
-		
-	
-			
-		@Test
-		public void deleteUser(){
-		   Users  userid = new Users("4","mohit",20,"male",9100000000L,"abcdef","mohi@gmail.com");
-		   ur.deleteById(4);
-			/*userService.deleteUser(userid.getUserid());*/
-	        verify(ur,times(1)).deleteById(4);
-		}
-		
-		
-		
 		
 		@Test
 		public void addAppointment() throws java.text.ParseException{
-			//SimpleDateFormat sdf1 = new SimpleDateFormat("yyy-MM-dd");
-			//Date d = sdf1.parse("2020-04-03");
 			Appointment appointment = new Appointment(1,false,"2020-05-31","1","bp","1");
 			userService.makeAppointment(appointment);
 			Mockito.verify(ap,Mockito.times(1)).save(appointment);
@@ -109,9 +79,6 @@ class UserHealthCareApplicationTests {
 			
 		@Test
 		public void viewAppointment() throws java.text.ParseException{
-			//SimpleDateFormat sdf= new SimpleDateFormat("yyy-MM-dd");
-				//Date d1 = sdf.parse("2020-04-01");
-				
 		    Appointment appointmentid = new Appointment(1,false,"2020-05-31","1","bp","1");
 		    
 		    ap.findById(1);

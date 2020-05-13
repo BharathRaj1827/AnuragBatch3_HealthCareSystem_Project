@@ -3,9 +3,7 @@ package com.cg.sprint.bean;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -14,13 +12,13 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name="Testclass")
 public class Testclass {
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
-	@SequenceGenerator(name="seq", initialValue=1, allocationSize=100)
-	@Column(name="testid",nullable=false,updatable=false)
+	@GeneratedValue(generator="uuid")
+	@GenericGenerator(name="uuid",strategy="uuid2")
+	@Column(name="testid",length=10)
 	private String testid;
-	@Column(name="testname")
+	@Column(name="testname",length=25)
 	private String testname;
-	@Column(name="centrenum")
+	@Column(name="centrenum",length=10)
 	private String centrenum;
 	
 	public Testclass() {}
