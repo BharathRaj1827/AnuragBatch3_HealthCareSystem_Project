@@ -41,15 +41,9 @@ public class UserController {
 	 }
 	
 		@PostMapping("/makeAppointment")
-		public ResponseEntity<Boolean> updateAppointment(@RequestBody Appointment app) throws IdNotFoundException{
-			Boolean exists = userservice.userIdFound(app.getUsersid());
-			if (exists) {
-				System.out.println(exists);
-				userservice.makeAppointment(app);
-				return new ResponseEntity<>(true, HttpStatus.OK);
-			} else {
-				throw new IdNotFoundException("Sorry! User Id exists");
-			}
+		public ResponseEntity<Boolean> updateAppointment(@RequestBody Appointment app) {
+			userservice.makeAppointment(app);
+			return new ResponseEntity<>(true, HttpStatus.OK);
 		}
 
 	 @GetMapping(value="/getAppointment/{usersid}")

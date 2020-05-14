@@ -36,7 +36,7 @@ public class AdminController {
  	 public ResponseEntity<Admins> validate(@PathVariable("adminname") String aname, @PathVariable("adminpassword") String apwd) throws UserNotFoundException{
  		Admins a= adminservice.validate(aname, apwd);
  		if(a==null) {
- 			throw new UserNotFoundException("Not a valid User");
+ 			throw new UserNotFoundException("Not an admin");
  		}
  		return new ResponseEntity<Admins>(a,HttpStatus.OK);
  	 }
