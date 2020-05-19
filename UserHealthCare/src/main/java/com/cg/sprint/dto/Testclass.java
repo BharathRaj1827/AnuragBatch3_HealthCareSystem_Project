@@ -1,4 +1,4 @@
-package com.cg.sprint.bean;
+package com.cg.sprint.dto;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

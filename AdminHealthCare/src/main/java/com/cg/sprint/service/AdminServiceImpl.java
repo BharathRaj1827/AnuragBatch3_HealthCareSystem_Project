@@ -6,14 +6,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.cg.sprint.bean.Admins;
-import com.cg.sprint.bean.Appointment;
-import com.cg.sprint.bean.Diagnostic_center;
-import com.cg.sprint.bean.Testclass;
+
 import com.cg.sprint.dao.AdminRepository;
 import com.cg.sprint.dao.AppointmentRepository;
 import com.cg.sprint.dao.Diagnostic_centerRepository;
 import com.cg.sprint.dao.TestclassRepository;
+import com.cg.sprint.dto.Admins;
+import com.cg.sprint.dto.Appointment;
+import com.cg.sprint.dto.Diagnostic_center;
+import com.cg.sprint.dto.Testclass;
 
 @Service
 @Transactional

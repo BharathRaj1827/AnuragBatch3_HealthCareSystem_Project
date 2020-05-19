@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.cg.sprint.bean.Testclass;
+import com.cg.sprint.dto.Testclass;
 
 public interface TestclassRepository extends JpaRepository<Testclass,Serializable>
 {

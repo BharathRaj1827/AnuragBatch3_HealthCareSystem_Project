@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.cg.sprint.bean.Diagnostic_center;
+import com.cg.sprint.dto.Diagnostic_center;
 
 
 

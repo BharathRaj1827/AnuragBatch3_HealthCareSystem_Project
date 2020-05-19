@@ -1,4 +1,5 @@
-package com.cg.sprint.bean;
+package com.cg.sprint.dto;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,8 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
-
 
 @Entity
 @Table(name = "Appointment")
@@ -29,6 +28,7 @@ public class Appointment {
 	private String testnames;
 	@Column(name="usersid",length=10)
 	private String usersid;
+	
 	
 	public Appointment() {}
 	public Appointment(int appointmentid, boolean appointmentstatus, String datetime, String centrenumber, String testnames,String usersid) {

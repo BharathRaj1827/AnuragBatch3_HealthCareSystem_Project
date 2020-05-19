@@ -2,10 +2,10 @@ package com.cg.sprint.service;
 
 import java.util.List;
 
-import com.cg.sprint.bean.Appointment;
-import com.cg.sprint.bean.Diagnostic_center;
-import com.cg.sprint.bean.Testclass;
-import com.cg.sprint.bean.Users;
+import com.cg.sprint.dto.Appointment;
+import com.cg.sprint.dto.Diagnostic_center;
+import com.cg.sprint.dto.Testclass;
+import com.cg.sprint.dto.Users;
 
 public interface UserService {
 	

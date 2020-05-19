@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cg.sprint.bean.Admins;
-import com.cg.sprint.bean.Appointment;
-import com.cg.sprint.bean.Diagnostic_center;
-import com.cg.sprint.bean.Testclass;
+import com.cg.sprint.dto.Admins;
+import com.cg.sprint.dto.Appointment;
+import com.cg.sprint.dto.Diagnostic_center;
+import com.cg.sprint.dto.Testclass;
 import com.cg.sprint.exceptions.UserNotFoundException;
 import com.cg.sprint.service.AdminService;
 

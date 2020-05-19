@@ -16,14 +16,14 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.cg.sprint.bean.Appointment;
-import com.cg.sprint.bean.Diagnostic_center;
-import com.cg.sprint.bean.Testclass;
-import com.cg.sprint.bean.Users;
 import com.cg.sprint.dao.AppointmentRepository;
 import com.cg.sprint.dao.Diagnostic_centerRepository;
 import com.cg.sprint.dao.TestclassRepository;
 import com.cg.sprint.dao.UserRepository;
+import com.cg.sprint.dto.Appointment;
+import com.cg.sprint.dto.Diagnostic_center;
+import com.cg.sprint.dto.Testclass;
+import com.cg.sprint.dto.Users;
 import com.cg.sprint.service.UserServiceImpl;
 
 @RunWith(SpringJUnit4ClassRunner.class)

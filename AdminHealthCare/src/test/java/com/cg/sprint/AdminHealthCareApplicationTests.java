@@ -18,13 +18,13 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.cg.sprint.bean.Appointment;
-import com.cg.sprint.bean.Diagnostic_center;
-import com.cg.sprint.bean.Testclass;
 import com.cg.sprint.dao.AdminRepository;
 import com.cg.sprint.dao.AppointmentRepository;
 import com.cg.sprint.dao.Diagnostic_centerRepository;
 import com.cg.sprint.dao.TestclassRepository;
+import com.cg.sprint.dto.Appointment;
+import com.cg.sprint.dto.Diagnostic_center;
+import com.cg.sprint.dto.Testclass;
 import com.cg.sprint.service.AdminServiceImpl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -79,11 +79,6 @@ class AdminHealthCareApplicationTests {
 		cr.save(centreid);
 		verify(cr,Mockito.times(1)).save(centreid);
 	}
-		/*adminService.removeCenter(centreid.getCentreid());
-        verify(cr,times(1)).deleteById(centreid.getCentreid());
-	}*/
-	
-	
 	
 	@Test
 	public void testviewTestClass(){
@@ -97,17 +92,12 @@ class AdminHealthCareApplicationTests {
 		assertEquals(3, result.size());
 	}
 	
-	
-	
-	
 	@Test
 	public void addTestclass(){
 		Testclass testclass = new Testclass("4","dengue","3");
 		adminService.addTestclass(testclass);
 		verify(tr,times(1)).save(testclass);
 	}
-	
-	
 	
 	
 	@Test
@@ -133,18 +123,8 @@ class AdminHealthCareApplicationTests {
 		Mockito.when(ap.findAllById(3)).thenReturn(appointmentList);
 		
 		List<Appointment> returnedData = ap.findAllById(3);
-		//assertEquals(returnedData.getId(), List.get(0).getId());
 		assertEquals(3,returnedData.size());
 	}
-
-
-		/*
-		when(ap.findById(appointmentList)).thenReturn(appointmentList);
-		
-		List<Appointment> result = adminService.viewAppointment1(centrenumber);
-		assertEquals(3, result.size());
-	}*/
-	
 	
 	
 	@Test
